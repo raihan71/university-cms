@@ -11,8 +11,6 @@
   <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/favicon.png') }}">
   <!-- Normalize CSS -->
   <link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
-  <!-- Main CSS -->
-  <link rel="stylesheet" href="{{ asset('css/main.css') }}">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
   <!-- Animate CSS -->
@@ -36,7 +34,7 @@
   <!-- ReImageGrid CSS -->
   <link rel="stylesheet" href="{{ asset('css/reImageGrid.css') }}">
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="{{ asset('style.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/main.min.css') }}?v={{ time() }}">
   <!-- Modernizr Js -->
   <script src="{{ asset('js/modernizr-2.8.3.min.js') }}"></script>
   @stack('head')
@@ -59,7 +57,7 @@
               <div class="row">
                   <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                       <div class="footer-box">
-                          <a href="index-2.html"><img class="img-responsive" src="img/logo-footer.png" alt="logo"></a>
+                        <a style="display: flex; align-items: center;" href="/"><img class="img-responsive" width="80" src="{{ $universities->logo ? asset('storage/' . $universities->logo) : asset('img/logo-footer.png') }}" alt="logo"><h3>{{ $universities->name }}</h3></a>
                           <div class="footer-about">
                               <p>Praesent vel rutrum purus. Nam vel dui eu sus duis dignissim dignissim. Suspenetey disse at ros tecongueconsequat.Fusce sit amet rna feugiat.</p>
                           </div>
@@ -160,7 +158,7 @@
   <!-- Gridrotator js -->
   <script src="{{ asset('js/jquery.gridrotator.js') }}" type="text/javascript"></script>
   <!-- Custom Js -->
-  <script src="{{ asset('js/main.js') }}" type="text/javascript"></script>
+  <script src="{{ asset('js/main.min.js') }}?v={{ time() }}" type="text/javascript"></script>
   @stack('scripts')
 </body>
 </html>

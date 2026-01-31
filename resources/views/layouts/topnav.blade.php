@@ -18,12 +18,15 @@
     <div class="main-menu-area" id="sticker">
         <div class="container">
             <div class="row">
-                <div class="col-lg-2 col-md-2 col-sm-3">
+                <div class="col-lg-3 col-md-3 col-sm-3">
                     <div class="logo-area">
-                        <a href="index-2.html"><img class="img-responsive" src="img/logo-textprimary.png" alt="logo"></a>
+                        <a href="/" style="display: flex; align-items: center;">
+                            <img class="img-responsive" width="50" src="{{ $universities->logo ? asset('storage/' . $universities->logo) : asset('img/logo-textprimary.png') }}" alt="logo">
+                            <h3 class="logo-title">{{ $universities->name }}</h3>
+                        </a>
                     </div>
                 </div>
-                <div class="col-lg-9 col-md-9 col-sm-9">
+                <div class="col-lg-8 col-md-8 col-sm-8">
                     <nav id="desktop-nav">
                         <ul>
                             <li class="active"><a href="{{route('frontpage')}}">Beranda</a>
