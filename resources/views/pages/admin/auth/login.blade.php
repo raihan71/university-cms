@@ -29,7 +29,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    @enderror
+                                @enderror
                                 <label class="small mb-1" for="inputEmailAddress">Email Address</label>
                                 <input
                                     class="form-control py-4"
