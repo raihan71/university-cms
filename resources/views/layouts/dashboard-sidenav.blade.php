@@ -1,0 +1,12 @@
+<aside class="d-flex flex-column min-vh-100 border-end bg-dark overflow-y-auto" style="width: 300px;">
+  <div class="sidebar p-3">
+    <ul class="nav flex-column">
+      <li class="nav-item mb-2">
+        <a class="nav-link {{ request()->routeIs('portal-admin.dashboard') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.dashboard')}}"><i class="fa fa-tachometer-alt"></i> Dashboard</a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link {{ request()->routeIs('portal-admin.settings.index') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.settings.index')}}"><i class="fa fa-cog"></i> Pengaturan Kampus</a>
+      </li>
+    </ul>
+  </div>
+</aside>

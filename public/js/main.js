@@ -140,23 +140,21 @@
      --------------------------------------*/
     $('nav#dropdown').meanmenu({ siteLogo: "" });
 
-    // Add explicit open/close state classes to the meanmenu toggle and nav
+    // Swap the reveal class to meanmenu-close when plugin adds meanclose
     var setMeanMenuState = function() {
-        var $toggle = $('.meanmenu-reveal, .meanmenu-close');
-        if (!$toggle.length) return;
+        var $toggles = $('.meanmenu-reveal, .meanmenu-close');
+        if (!$toggles.length) return;
 
-        var isOpen = $toggle.hasClass('meanclose');
-        $toggle.toggleClass('meanmenu-close', isOpen);
-        $toggle.toggleClass('meanmenu-open', !isOpen);
+        $toggles.each(function() {
+            var $toggle = $(this);
+            var isOpen = $toggle.hasClass('meanclose');
 
-        // Ensure only the open/close class is present per state
-        if (isOpen) {
-            $toggle.removeClass('meanmenu-reveal');
-        } else {
-            $toggle.addClass('meanmenu-reveal').removeClass('meanmenu-close');
-        }
-
-        $('.mean-nav').toggleClass('mean-nav-open', isOpen);
+            if (isOpen) {
+                $toggle.removeClass('meanmenu-reveal').addClass('meanmenu-close');
+            } else {
+                $toggle.removeClass('meanmenu-close').addClass('meanmenu-reveal');
+            }
+        });
     };
 
     // Sync state on build, resize, and after each toggle click
