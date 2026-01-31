@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UniversityController;
+use App\Http\Controllers\TrixAttachmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ Route::group(['prefix' => 'portal-admin', 'as' => 'portal-admin.'], function () 
     Route::group(['middleware' => ['admin']], function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
+        Route::post('/attachments', [TrixAttachmentController::class, 'store'])->name('attachments.store');
         Route::group(['prefix' => 'settings', 'as' => 'settings.'], function () {
             Route::get('/', [UniversityController::class, 'settings'])->name('index');
             Route::put('/update', [UniversityController::class, 'updateSettings'])->name('update');
