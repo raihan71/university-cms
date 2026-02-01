@@ -7,6 +7,9 @@
       <li class="nav-item mb-2">
         <a class="nav-link {{ request()->routeIs('portal-admin.settings.index') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.settings.index')}}"><i class="fa fa-cog"></i> Pengaturan Kampus</a>
       </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link {{ request()->routeIs('portal-admin.banners.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.banners.index')}}"><i class="fa fa-image"></i> Banner</a>
+      </li>
     </ul>
   </div>
 </aside>

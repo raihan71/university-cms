@@ -84,8 +84,7 @@
                 <label class="form-label" for="description">Deskripsi</label>
             </div>
             <div class="card-body">
-                <input id="description_input" type="hidden" name="description" value="{{ old('description', $universities->description) }}">
-                <trix-editor id="description" class="trix-content" input="description_input"></trix-editor>
+                <textarea class="form-control w-100 h-100" id="description" name="description">{{ old('description', $universities->description) }}</textarea>
             </div>
         </div>
         <div class="card mb-3">
@@ -190,7 +189,6 @@
 
     // Ensure Trix editors show existing HTML from the database / old() helper.
     const trixInitialValues = {
-        description: {!! json_encode(old('description', $universities->description)) !!},
         history: {!! json_encode(old('history', $universities->history)) !!},
         vision: {!! json_encode(old('vision', $universities->vision)) !!},
         mission: {!! json_encode(old('mission', $universities->mission)) !!},

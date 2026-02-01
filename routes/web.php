@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BannersController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FrontpageController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\TrixAttachmentController;
 
@@ -30,12 +32,18 @@ Route::group(['prefix' => 'portal-admin', 'as' => 'portal-admin.'], function () 
             Route::get('/', [UniversityController::class, 'settings'])->name('index');
             Route::put('/update', [UniversityController::class, 'updateSettings'])->name('update');
         });
+        Route::group(['prefix' => 'banners', 'as' => 'banners.'], function () {
+            Route::get('/', [BannersController::class, 'index'])->name('index');
+            Route::get('/create', [BannersController::class, 'create'])->name('create');
+            Route::post('/', [BannersController::class, 'store'])->name('store');
+            Route::get('/{banner}/edit', [BannersController::class, 'edit'])->name('edit');
+            Route::put('/{banner}', [BannersController::class, 'update'])->name('update');
+            Route::delete('/{banner}', [BannersController::class, 'destroy'])->name('destroy');
+        });
     });
 });
 
-Route::get('/', function () {
-    return view('pages.frontpage');
-})->name('frontpage');
+Route::get('/', [FrontpageController::class, 'index'])->name('frontpage');
 Route::get('/about', function () {
     return view('pages.about');
 })->name('about');

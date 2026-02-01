@@ -59,7 +59,7 @@
                       <div class="footer-box">
                         <a style="display: flex; align-items: center;" href="/"><img class="img-responsive" width="80" src="{{ $universities->logo ? asset('storage/' . $universities->logo) : asset('img/logo-footer.png') }}" alt="logo"><h3>{{ $universities->name }}</h3></a>
                           <div class="footer-about">
-                              <p>Praesent vel rutrum purus. Nam vel dui eu sus duis dignissim dignissim. Suspenetey disse at ros tecongueconsequat.Fusce sit amet rna feugiat.</p>
+                              <p>{{ $universities->description }}</p>
                           </div>
                           <ul class="footer-social">
                               <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -98,8 +98,8 @@
                       <div class="footer-box">
                           <h3>Information</h3>
                           <ul class="corporate-address">
-                              <li><i class="fa fa-phone" aria-hidden="true"></i><a href="Phone(01)800433633.html"> (01) 800 433 633 </a></li>
-                              <li><i class="fa fa-envelope-o" aria-hidden="true"></i>info@bostonea.com</li>
+                              <li><i class="fa fa-phone" aria-hidden="true"></i><a href="Phone(01)800433633.html"> {{ $universities->phone }} </a></li>
+                              <li><i class="fa fa-envelope-o" aria-hidden="true"></i>{{ $universities->email }}</li>
                           </ul>
                           <div class="newsletter-area">
                               <h3>Newsletter</h3>
@@ -121,7 +121,7 @@
           <div class="container">
               <div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                      <p>&copy; 2017 Academics All Rights Reserved. &nbsp; Designed by<a target="_blank" href="http://radiustheme.com/"> RadiusTheme</a></p>
+                      <p>&copy; 2025 {{ $universities->name }}. All Rights Reserved. &nbsp; Designed by<a target="_blank" href="http://raihan.my.id/"> Raihan71</a></p>
                   </div>
               </div>
           </div>

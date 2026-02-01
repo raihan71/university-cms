@@ -6,8 +6,8 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="header-top-left">
                             <ul>
-                                <li><i class="fa fa-phone" aria-hidden="true"></i><a href="Tel:+1234567890"> + 123 456 78910 </a></li>
-                                <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="#">info@academics.com</a></li>
+                                <li><i class="fa fa-phone" aria-hidden="true"></i><a href="Tel:+1234567890">{{ $universities->phone }}</a></li>
+                                <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="#">{{ $universities->email }}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -96,6 +96,14 @@
                             </li>
                             <li><a href="#">Informasi</a>
                                 <ul>
+                                    <li class="has-child-menu"><a href="#">PMB</a>
+                                        <ul class="thired-level">
+                                            <li><a href="gallery1.html">UKM</a></li>
+                                            <li><a href="gallery2.html">Beasiswa</a></li>
+                                            <li><a href="single-gallery.html">Layanan Konseling</a></li>
+                                            <li><a href="single-gallery.html">Alumni & Tracer Study</a></li>
+                                        </ul>
+                                    </li>
                                     <li><a href="#">Pengumuman</a></li>
                                     <li><a href="#">Berita</a></li>
                                     <li><a href="#">Acara</a></li>

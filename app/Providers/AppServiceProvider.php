@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use App\Models\University;
 use Illuminate\Support\ServiceProvider;
+use App\Models\University;
+use App\Models\Banners;
 
 class AppServiceProvider extends ServiceProvider
 {
