@@ -34,7 +34,7 @@
   <!-- ReImageGrid CSS -->
   <link rel="stylesheet" href="{{ asset('css/reImageGrid.css') }}">
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="{{ asset('css/main.min.css') }}?v={{ time() }}">
+  <link rel="stylesheet" href="{{ asset('main.min.css') }}?v={{ time() }}">
   <!-- Modernizr Js -->
   <script src="{{ asset('js/modernizr-2.8.3.min.js') }}"></script>
   @stack('head')
@@ -121,7 +121,7 @@
           <div class="container">
               <div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                      <p>&copy; 2025 {{ $universities->name }}. All Rights Reserved. &nbsp; Designed by<a target="_blank" href="http://raihan.my.id/"> Raihan71</a></p>
+                      <p>&copy; 2025 {{ $universities->name }}. All Rights Reserved.</p>
                   </div>
               </div>
           </div>
@@ -158,7 +158,7 @@
   <!-- Gridrotator js -->
   <script src="{{ asset('js/jquery.gridrotator.js') }}" type="text/javascript"></script>
   <!-- Custom Js -->
-  <script src="{{ asset('js/main.min.js') }}?v={{ time() }}" type="text/javascript"></script>
+  <script src="{{ asset('main.min.js') }}?v={{ time() }}" type="text/javascript"></script>
   @stack('scripts')
 </body>
 </html>

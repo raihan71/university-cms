@@ -58,11 +58,11 @@
                             </li>
                             <li><a href="#">Akademik</a>
                                 <ul>
-                                    <li class="has-child-menu"><a href="courses1.html">Program Studi</a>
+                                    <li class="has-child-menu"><a href="javascript:;">Program Studi</a>
                                         <ul class="thired-level">
-                                            <li><a href="news1.html">News 1</a></li>
-                                            <li><a href="news2.html">News 2</a></li>
-                                            <li><a href="single-news.html">News Details</a></li>
+                                            @foreach($courses as $course)
+                                                <li><a href="{{route('courses.show', $course->slug)}}">{{ $course->name }}</a></li>
+                                            @endforeach
                                         </ul>
                                     </li>
                                     <li><a href="courses2.html">Kalender Akademik</a></li>

@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Models\University;
 use App\Models\Banners;
+use App\Models\Course;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,7 +21,9 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('layouts.topnav', function ($view) {
             $universities = University::firstOrFail();
+            $courses = Course::all();
             $view->with('universities', $universities);
+            $view->with('courses', $courses);
         });
     }
 

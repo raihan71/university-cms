@@ -5,4 +5,6 @@ mix.styles(
     "public/main.min.css"
 );
 
+mix.styles("resources/css/custom.css", "public/custom.min.css");
+
 mix.scripts("resources/js/main.js", "public/main.min.js");

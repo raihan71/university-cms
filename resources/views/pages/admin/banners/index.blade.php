@@ -21,6 +21,7 @@
               <th>Gambar</th>
               <th>Link</th>
               <th>Status</th>
+              <th>Jenis</th>
               <th>Pengaturan</th>
           </tr>
       </thead>
@@ -34,6 +35,9 @@
                   <td><a href="{{ $banner->link }}" class="btn btn-link" target="_blank">Kunjungi</a></td>
                   <td>
                     <label class="badge {{ $banner->status === 1 ? "badge-success" : "badge-danger" }}">{{ $banner->status === 1 ? "Aktif" : "Non-Aktif" }}</label>
+                  </td>
+                  <td>
+                    <label class="badge {{ $banner->type === 'image' ? 'badge-info' : 'badge-secondary' }}">{{ $banner->type ? ucfirst($banner->type) : 'Umum' }}</label>
                   </td>
                   <td>
                       <a href="{{ route('portal-admin.banners.edit', $banner->id) }}" class="btn btn-warning">Edit</a>

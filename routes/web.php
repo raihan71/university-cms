@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontpageController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\TrixAttachmentController;
+use App\Http\Controllers\CoursesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,16 +41,26 @@ Route::group(['prefix' => 'portal-admin', 'as' => 'portal-admin.'], function () 
             Route::put('/{banner}', [BannersController::class, 'update'])->name('update');
             Route::delete('/{banner}', [BannersController::class, 'destroy'])->name('destroy');
         });
+
+        Route::group(['prefix' => 'courses', 'as' => 'courses.'], function () {
+            Route::get('/', [CoursesController::class, 'index'])->name('index');
+            Route::get('/create', [CoursesController::class, 'create'])->name('create');
+            Route::post('/', [CoursesController::class, 'store'])->name('store');
+            Route::get('/{course}/edit', [CoursesController::class, 'edit'])->name('edit');
+            Route::put('/{course}', [CoursesController::class, 'update'])->name('update');
+            Route::delete('/{course}', [CoursesController::class, 'destroy'])->name('destroy');
+        });
     });
 });
 
 Route::get('/', [FrontpageController::class, 'index'])->name('frontpage');
+Route::group(['prefix' => 'courses', 'as' => 'courses.'], function () {
+    Route::get('/', [CoursesController::class, 'frontcourse'])->name('index');
+    Route::get('/{course}', [CoursesController::class, 'frontcourseShow'])->name('show');
+});
 Route::get('/about', function () {
     return view('pages.about');
 })->name('about');
-Route::get('/courses', function () {
-    return view('pages.courses');
-})->name('courses');
 Route::get('/contact', function () {
     return view('pages.contact');
 })->name('contact');

@@ -29,7 +29,11 @@ class FrontpageController extends Controller
                 'icon' => 'fa-book'
             ]
         ];
-        $banners = Banners::where('status', 1)->get();
+        $banners = Banners::where('status', 1)
+            ->where('type', 'image')
+            ->latest()
+            ->take(3)
+            ->get();
         return view('pages.frontpage', [
             'services' => $services,
             'banners' => $banners

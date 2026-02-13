@@ -40,10 +40,12 @@
               </select>
           </div>
           <div class="form-group">
-              <label for="type">Jenis</label>
+              <label for="type">Jenis Banner</label>
               <select class="form-control" id="type" name="type" required>
-                  <option value="image">Gambar</option>
-                  <option value="video">Video</option>
+                <option value="image" selected>Umum</option>
+                @foreach($courses as $course)
+                    <option value="{{ $course->slug }}">{{ $course->name }}</option>
+                @endforeach
               </select>
           </div>
           <button type="submit" class="btn btn-primary">Simpan</button>

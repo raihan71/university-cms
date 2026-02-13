@@ -10,6 +10,9 @@
       <li class="nav-item mb-2">
         <a class="nav-link {{ request()->routeIs('portal-admin.banners.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.banners.index')}}"><i class="fa fa-image"></i> Banner</a>
       </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link {{ request()->routeIs('portal-admin.courses.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.courses.index')}}"><i class="fa fa-book"></i> Kursus</a>
+      </li>
     </ul>
   </div>
 </aside>

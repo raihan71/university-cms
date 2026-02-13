@@ -4,19 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Banners;
-use Illuminate\Support\Facades\Storage;
+use App\Models\Course;
 
 class BannersController extends Controller
 {
     public function index()
     {
-        $banners = Banners::paginate(5);
+        $banners = Banners::orderBy('created_at', 'desc')->paginate(10);
         return view('pages.admin.banners.index', compact('banners'));
     }
 
     public function create()
     {
-        return view('pages.admin.banners.create');
+        $courses = Course::all();
+        return view('pages.admin.banners.create', compact('courses'));
     }
 
     public function store(Request $request)
@@ -27,7 +28,7 @@ class BannersController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'link' => 'required|url',
             'status' => 'required|in:1,0',
-            'type' => 'required|in:image,video',
+            'type' => 'required',
         ]);
 
         $banner = new Banners();
