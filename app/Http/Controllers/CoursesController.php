@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\Banners;
+use App\Models\Teacher;
 
 class CoursesController extends Controller
 {
@@ -88,9 +89,12 @@ class CoursesController extends Controller
             ->where('type', $slug)
             ->get();
 
+        $teachers = Teacher::orderBy('name')->where('prodi', $course->slug)->get();
+
         return view('pages.details.course_detail', [
             'course' => $course,
-            'banners' => $banners
+            'banners' => $banners,
+            'teachers' => $teachers
         ]);
     }
 }

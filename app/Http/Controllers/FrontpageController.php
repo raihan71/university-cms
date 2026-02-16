@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Banners;
+use App\Models\Course;
 
 class FrontpageController extends Controller
 {
@@ -34,9 +35,11 @@ class FrontpageController extends Controller
             ->latest()
             ->take(3)
             ->get();
+        $courses = Course::orderBy('created_at', 'desc')->take(4)->get();
         return view('pages.frontpage', [
             'services' => $services,
-            'banners' => $banners
+            'banners' => $banners,
+            'courses' => $courses
         ]);
     }
 }

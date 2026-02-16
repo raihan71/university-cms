@@ -159,7 +159,7 @@ ul {
     right: 0;
     margin: 0 auto;
     position: absolute;
-    background-color: rgb(7 122 72 / 0.88);
+    background-color: rgb(7 122 72 / 0.75);
 }
 .bg-primary-deep-fixed {
     background-attachment: fixed;
@@ -191,7 +191,7 @@ ul {
     right: 0;
     margin: 0 auto;
     position: absolute;
-    background-color: rgb(7 122 72 / 0.88);
+    background-color: rgb(7 122 72 / 0.75);
 }
 .overlay-video {
     position: relative;
@@ -203,7 +203,7 @@ ul {
     right: 0;
     margin: 0 auto;
     position: absolute;
-    background-color: rgb(7 122 72 / 0.88);
+    background-color: rgb(7 122 72 / 0.75);
     height: 100%;
     width: 100%;
 }
@@ -3163,7 +3163,7 @@ nav#desktop-nav li.has-child-menu:hover ul.thired-level {
     background-color: rgb(0 33 71 / 0.8);
 }
 .service-box1 {
-    border-right: 1px solid #aaa;
+    border-right: 1px solid #fff;
     padding: 30px 30px 15px 40px;
     display: -webkit-box;
     display: -webkit-flex;
@@ -3171,7 +3171,7 @@ nav#desktop-nav li.has-child-menu:hover ul.thired-level {
     display: -ms-flex;
     display: -o-flex;
     display: flex;
-    background-color: rgb(11 163 96 / 0.77);
+    background-color: rgba(11, 163, 96, 0.7);
 }
 @media (min-width: 992px) and (max-width: 1199px) {
     .service-box1 {
@@ -3185,7 +3185,7 @@ nav#desktop-nav li.has-child-menu:hover ul.thired-level {
 }
 @media only screen and (max-width: 991px) {
     .service-box1 {
-        background-color: rgb(11 163 96 / 0.77);
+        background-color: rgb(11 163 96 / 0.7);
         padding: 20px 20px 15px;
     }
 }
@@ -6042,7 +6042,7 @@ ul.course-feature2 li:before {
     .course-details-tab-area
     ul.course-details-tab-btn
     > li:hover {
-    background: #001a39;
+    background: #098750;
 }
 .course-details-inner
     .course-details-tab-area
@@ -8758,6 +8758,7 @@ ul.course-feature2 li:before {
 .brand-area {
     padding: 70px 0;
     text-align: center;
+    background: #f5f5f5;
 }
 .brand-area .brand-area-box a img {
     width: 100%;

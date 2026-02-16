@@ -8,6 +8,7 @@ use App\Http\Controllers\FrontpageController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\TrixAttachmentController;
 use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\TeacherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,15 @@ Route::group(['prefix' => 'portal-admin', 'as' => 'portal-admin.'], function () 
             Route::get('/{course}/edit', [CoursesController::class, 'edit'])->name('edit');
             Route::put('/{course}', [CoursesController::class, 'update'])->name('update');
             Route::delete('/{course}', [CoursesController::class, 'destroy'])->name('destroy');
+        });
+
+        Route::group(['prefix' => 'teachers', 'as' => 'teachers.'], function () {
+            Route::get('/', [TeacherController::class, 'index'])->name('index');
+            Route::get('/create', [TeacherController::class, 'create'])->name('create');
+            Route::post('/', [TeacherController::class, 'store'])->name('store');
+            Route::get('/{teacher}/edit', [TeacherController::class, 'edit'])->name('edit');
+            Route::put('/{teacher}', [TeacherController::class, 'update'])->name('update');
+            Route::delete('/{teacher}', [TeacherController::class, 'destroy'])->name('destroy');
         });
     });
 });

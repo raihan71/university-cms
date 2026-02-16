@@ -11,7 +11,10 @@
         <a class="nav-link {{ request()->routeIs('portal-admin.banners.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.banners.index')}}"><i class="fa fa-image"></i> Banner</a>
       </li>
       <li class="nav-item mb-2">
-        <a class="nav-link {{ request()->routeIs('portal-admin.courses.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.courses.index')}}"><i class="fa fa-book"></i> Kursus</a>
+        <a class="nav-link {{ request()->routeIs('portal-admin.courses.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.courses.index')}}"><i class="fa fa-book"></i> Program Studi</a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link {{ request()->routeIs('portal-admin.teachers.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.teachers.index')}}"><i class="fa fa-chalkboard-teacher"></i> Pengajar/Dosen</a>
       </li>
     </ul>
   </div>

@@ -46,246 +46,50 @@
 </div>
 <div class="about1-area">
     <div class="container">
-        <h1 class="about-title wow fadeIn" data-wow-duration="1s" data-wow-delay=".2s">Welcome To Academics</h1>
+        <h1 class="about-title wow fadeIn" data-wow-duration="1s" data-wow-delay=".2s">Wilujeung Sumping</h1>
         <p class="about-sub-title wow fadeIn" data-wow-duration="1s" data-wow-delay=".2s">Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.</p>
         <div class="about-img-holder wow fadeIn" data-wow-duration="2s" data-wow-delay=".2s">
-            <img src="{{asset('img/about/1.jpg')}}" alt="about" class="img-responsive" />
+            <img src="{{asset('img/team/team1.png')}}" width="650" height="328" alt="about" class="img-responsive" />
         </div>
     </div>
 </div>
 <div class="courses2-area bg-common-style" style="background-image: url({{asset('img/featured/back2.jpg')}});">
     <div class="container">
-        <h2 class="title-default-left">Featured Courses</h2>
+        <h2 class="title-default-left">Rekomendasi Program Studi</h2>
     </div>
     <div class="container courses-list-wrapper">
         <div class="row courses-wrapper courses-list">
+            @foreach ($courses as $course)
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 courses-item">
                 <div class="courses-box2">
                     <div class="single-item-wrapper">
                         <div class="courses-img-wrapper hvr-bounce-to-right">
-                            <img class="img-responsive" src="img/course/5.jpg" alt="courses">
-                            <a href="#"><i class="fa fa-link" aria-hidden="true"></i></a>
+                            <img loading="lazy" src="{{ asset('storage/'.$course->image) }}" class="img-responsive" alt="{{ $course->name }}">
+                            <a href="{{ route('courses.show', $course->slug) }}"><i class="fa fa-link" aria-hidden="true"></i></a>
                         </div>
                         <div class="courses-content-wrapper">
-                            <h3 class="item-title"><a href="#">Evining MBA</a></h3>
-                            <p class="item-content">Rimply dummy texthe prinetting indus known printer galley scrambled.</p>
+                            <h3 class="item-title"><a href="{{ route('courses.show', $course->slug) }}">{{ $course->name }}</a></h3>
+                            <p class="item-content">{{ Str::limit($course->description, 50) }}</p>
                             <ul class="courses-info">
-                                <li>1 Year
-                                    <br><span> Course</span></li>
-                                <li>70
-                                    <br><span> Classes</span></li>
-                                <li>7 pm - 10 pm
-                                    <br><span> Time</span></li>
+                                <li>4 Tahun
+                                    <br><span> Studi</span></li>
+                                <li>160
+                                    <br><span> SKS</span></li>
+                                <li>Karyawan - Regular
+                                    <br><span> Kelas</span></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 courses-item">
-                <div class="courses-box2">
-                    <div class="single-item-wrapper">
-                        <div class="courses-img-wrapper hvr-bounce-to-right">
-                            <img class="img-responsive" src="img/course/6.jpg" alt="courses">
-                            <a href="#"><i class="fa fa-link" aria-hidden="true"></i></a>
-                        </div>
-                        <div class="courses-content-wrapper">
-                            <h3 class="item-title"><a href="#">Basic Philosopphy</a></h3>
-                            <p class="item-content">Rimply dummy texthe prinetting indus known printer galley scrambled.</p>
-                            <ul class="courses-info">
-                                <li>1 Year
-                                    <br><span> Course</span></li>
-                                <li>20
-                                    <br><span> Classes</span></li>
-                                <li>8 pm - 9 pm
-                                    <br><span> Time</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 courses-item">
-                <div class="courses-box2">
-                    <div class="single-item-wrapper">
-                        <div class="courses-img-wrapper hvr-bounce-to-right">
-                            <img class="img-responsive" src="img/course/7.jpg" alt="courses">
-                            <a href="#"><i class="fa fa-link" aria-hidden="true"></i></a>
-                        </div>
-                        <div class="courses-content-wrapper">
-                            <h3 class="item-title"><a href="#">Advance GMAT</a></h3>
-                            <p class="item-content">Rimply dummy texthe prinetting indus known printer galley scrambled.</p>
-                            <ul class="courses-info">
-                                <li>3 Months
-                                    <br><span> Course</span></li>
-                                <li>50
-                                    <br><span> Classes</span></li>
-                                <li>10 pm - 11 pm
-                                    <br><span> Time</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 courses-item">
-                <div class="courses-box2">
-                    <div class="single-item-wrapper">
-                        <div class="courses-img-wrapper hvr-bounce-to-right">
-                            <img class="img-responsive" src="img/course/8.jpg" alt="courses">
-                            <a href="#"><i class="fa fa-link" aria-hidden="true"></i></a>
-                        </div>
-                        <div class="courses-content-wrapper">
-                            <h3 class="item-title"><a href="#">IELTS</a></h3>
-                            <p class="item-content">Rimply dummy texthe prinetting indus known printer galley scrambled.</p>
-                            <ul class="courses-info">
-                                <li>2 Months
-                                    <br><span> Course</span></li>
-                                <li>15
-                                    <br><span> Classes</span></li>
-                                <li>5 pm - 7 pm
-                                    <br><span> Time</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 courses-item hidden">
-                <div class="courses-box2">
-                    <div class="single-item-wrapper">
-                        <div class="courses-img-wrapper hvr-bounce-to-right">
-                            <img class="img-responsive" src="img/course/9.jpg" alt="courses">
-                            <a href="#"><i class="fa fa-link" aria-hidden="true"></i></a>
-                        </div>
-                        <div class="courses-content-wrapper">
-                            <h3 class="item-title"><a href="#">Evining MBA</a></h3>
-                            <p class="item-content">Rimply dummy texthe prinetting indus known printer galley scrambled.</p>
-                            <ul class="courses-info">
-                                <li>1 Year
-                                    <br><span> Course</span></li>
-                                <li>70
-                                    <br><span> Classes</span></li>
-                                <li>7 pm - 10 pm
-                                    <br><span> Time</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 courses-item hidden">
-                <div class="courses-box2">
-                    <div class="single-item-wrapper">
-                        <div class="courses-img-wrapper hvr-bounce-to-right">
-                            <img class="img-responsive" src="img/course/10.jpg" alt="courses">
-                            <a href="#"><i class="fa fa-link" aria-hidden="true"></i></a>
-                        </div>
-                        <div class="courses-content-wrapper">
-                            <h3 class="item-title"><a href="#">Basic Philosopphy</a></h3>
-                            <p class="item-content">Rimply dummy texthe prinetting indus known printer galley scrambled.</p>
-                            <ul class="courses-info">
-                                <li>1 Year
-                                    <br><span> Course</span></li>
-                                <li>20
-                                    <br><span> Classes</span></li>
-                                <li>8 pm - 9 pm
-                                    <br><span> Time</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 courses-item hidden">
-                <div class="courses-box2">
-                    <div class="single-item-wrapper">
-                        <div class="courses-img-wrapper hvr-bounce-to-right">
-                            <img class="img-responsive" src="img/course/11.jpg" alt="courses">
-                            <a href="#"><i class="fa fa-link" aria-hidden="true"></i></a>
-                        </div>
-                        <div class="courses-content-wrapper">
-                            <h3 class="item-title"><a href="#">Advance GMAT</a></h3>
-                            <p class="item-content">Rimply dummy texthe prinetting indus known printer galley scrambled.</p>
-                            <ul class="courses-info">
-                                <li>3 Months
-                                    <br><span> Course</span></li>
-                                <li>50
-                                    <br><span> Classes</span></li>
-                                <li>10 pm - 11 pm
-                                    <br><span> Time</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 courses-item hidden">
-                <div class="courses-box2">
-                    <div class="single-item-wrapper">
-                        <div class="courses-img-wrapper hvr-bounce-to-right">
-                            <img class="img-responsive" src="img/course/12.jpg" alt="courses">
-                            <a href="#"><i class="fa fa-link" aria-hidden="true"></i></a>
-                        </div>
-                        <div class="courses-content-wrapper">
-                            <h3 class="item-title"><a href="#">IELTS</a></h3>
-                            <p class="item-content">Rimply dummy texthe prinetting indus known printer galley scrambled.</p>
-                            <ul class="courses-info">
-                                <li>2 Months
-                                    <br><span> Course</span></li>
-                                <li>15
-                                    <br><span> Classes</span></li>
-                                <li>5 pm - 7 pm
-                                    <br><span> Time</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 courses-item hidden">
-                <div class="courses-box2">
-                    <div class="single-item-wrapper">
-                        <div class="courses-img-wrapper hvr-bounce-to-right">
-                            <img class="img-responsive" src="img/course/13.jpg" alt="courses">
-                            <a href="#"><i class="fa fa-link" aria-hidden="true"></i></a>
-                        </div>
-                        <div class="courses-content-wrapper">
-                            <h3 class="item-title"><a href="#">Evining MBA</a></h3>
-                            <p class="item-content">Rimply dummy texthe prinetting indus known printer galley scrambled.</p>
-                            <ul class="courses-info">
-                                <li>1 Year
-                                    <br><span> Course</span></li>
-                                <li>70
-                                    <br><span> Classes</span></li>
-                                <li>7 pm - 10 pm
-                                    <br><span> Time</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 courses-item hidden">
-                <div class="courses-box2">
-                    <div class="single-item-wrapper">
-                        <div class="courses-img-wrapper hvr-bounce-to-right">
-                            <img class="img-responsive" src="img/course/14.jpg" alt="courses">
-                            <a href="#"><i class="fa fa-link" aria-hidden="true"></i></a>
-                        </div>
-                        <div class="courses-content-wrapper">
-                            <h3 class="item-title"><a href="#">Basic Philosopphy</a></h3>
-                            <p class="item-content">Rimply dummy texthe prinetting indus known printer galley scrambled.</p>
-                            <ul class="courses-info">
-                                <li>1 Year
-                                    <br><span> Course</span></li>
-                                <li>20
-                                    <br><span> Classes</span></li>
-                                <li>8 pm - 9 pm
-                                    <br><span> Time</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
         <div class="view-all-btn-area loadmore">
             <a href="#" class="view-all-accent-btn">View All Corses</a>
         </div>
     </div>
 </div>
-<div class="video-area overlay-video bg-common-style" style="background-image: url({{asset('img/banner/1.jpg')}});">
+<div class="video-area overlay-video bg-common-style" style="background-image: url({{asset('img/about/building2.jpg')}}); background-position: center;">
     <div class="container">
         <div class="video-content">
             <h2 class="video-title">Watch Campus Life Video Tour</h2>
@@ -381,7 +185,7 @@
         </div>
     </div>
 </div>
-<div class="counter-area bg-primary-deep" style="background-image: url({{asset('img/banner/4.jpg')}});">
+<div class="counter-area bg-primary-deep" style="background-image: url({{asset('img/about/wisudawan.jpg')}});">
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 counter1-box wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".20s">
@@ -403,7 +207,38 @@
         </div>
     </div>
 </div>
-<div class="students-say-area">
+<div class="brand-area bg-common-style">
+    <div class="container">
+        <h2 class="title-default-center">Partner Kerja Sama</h2>
+        <div class="rc-carousel" data-loop="true" data-items="4" data-margin="30" data-autoplay="true" data-autoplay-timeout="5000" data-smart-speed="2000" data-dots="false" data-nav="false" data-nav-speed="false" data-r-x-small="2" data-r-x-small-nav="false" data-r-x-small-dots="false" data-r-x-medium="3" data-r-x-medium-nav="false" data-r-x-medium-dots="false" data-r-small="4" data-r-small-nav="false" data-r-small-dots="false" data-r-medium="4" data-r-medium-nav="false" data-r-medium-dots="false" data-r-large="4" data-r-large-nav="false" data-r-large-dots="false">
+            <div class="brand-area-box">
+                <a href="#"><img src="img/brand/1.jpg" alt="brand"></a>
+            </div>
+            <div class="brand-area-box">
+                <a href="#"><img src="img/brand/2.jpg" alt="brand"></a>
+            </div>
+            <div class="brand-area-box">
+                <a href="#"><img src="img/brand/3.jpg" alt="brand"></a>
+            </div>
+            <div class="brand-area-box">
+                <a href="#"><img src="img/brand/4.jpg" alt="brand"></a>
+            </div>
+            <div class="brand-area-box">
+                <a href="#"><img src="img/brand/1.jpg" alt="brand"></a>
+            </div>
+            <div class="brand-area-box">
+                <a href="#"><img src="img/brand/2.jpg" alt="brand"></a>
+            </div>
+            <div class="brand-area-box">
+                <a href="#"><img src="img/brand/3.jpg" alt="brand"></a>
+            </div>
+            <div class="brand-area-box">
+                <a href="#"><img src="img/brand/4.jpg" alt="brand"></a>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- <div class="students-say-area">
     <h2 class="title-default-center">What Our Students Say</h2>
     <div class="container">
         <div class="rc-carousel" data-loop="true" data-items="2" data-margin="30" data-autoplay="false" data-autoplay-timeout="10000" data-smart-speed="2000" data-dots="true" data-nav="false" data-nav-speed="false" data-r-x-small="1" data-r-x-small-nav="false" data-r-x-small-dots="true" data-r-x-medium="2" data-r-x-medium-nav="false" data-r-x-medium-dots="true" data-r-small="2" data-r-small-nav="false" data-r-small-dots="true" data-r-medium="2" data-r-medium-nav="false" data-r-medium-dots="true" data-r-large="2" data-r-large-nav="false" data-r-large-dots="true">
@@ -523,150 +358,35 @@
             </div>
         </div>
     </div>
-</div>
-<div class="students-join1-area">
-    <div class="container">
-        <div class="students-join1-wrapper">
-            <div class="students-join1-left">
-                <div id="ri-grid" class="author-banner-bg ri-grid header text-center">
-                    <ul class="ri-grid-list">
-                        <li>
-                            <a href="#"><img src="img/students/student1.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student2.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student3.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student4.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student5.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student6.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student7.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student8.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student1.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student2.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student3.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student4.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student5.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student6.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student7.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student8.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student1.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student2.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student3.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student4.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student5.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student6.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student7.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student8.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student1.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student2.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student3.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student4.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student5.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student6.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student7.jpg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/students/student8.jpg" alt=""></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="students-join1-right">
-                <div>
-                    <h2>Join<span> 29,12,093</span> Students.</h2>
-                    <a href="#" class="join-now-btn">Join Now</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="brand-area">
-    <div class="container">
-        <div class="rc-carousel" data-loop="true" data-items="4" data-margin="30" data-autoplay="true" data-autoplay-timeout="5000" data-smart-speed="2000" data-dots="false" data-nav="false" data-nav-speed="false" data-r-x-small="2" data-r-x-small-nav="false" data-r-x-small-dots="false" data-r-x-medium="3" data-r-x-medium-nav="false" data-r-x-medium-dots="false" data-r-small="4" data-r-small-nav="false" data-r-small-dots="false" data-r-medium="4" data-r-medium-nav="false" data-r-medium-dots="false" data-r-large="4" data-r-large-nav="false" data-r-large-dots="false">
-            <div class="brand-area-box">
-                <a href="#"><img src="img/brand/1.jpg" alt="brand"></a>
-            </div>
-            <div class="brand-area-box">
-                <a href="#"><img src="img/brand/2.jpg" alt="brand"></a>
-            </div>
-            <div class="brand-area-box">
-                <a href="#"><img src="img/brand/3.jpg" alt="brand"></a>
-            </div>
-            <div class="brand-area-box">
-                <a href="#"><img src="img/brand/4.jpg" alt="brand"></a>
-            </div>
-            <div class="brand-area-box">
-                <a href="#"><img src="img/brand/1.jpg" alt="brand"></a>
-            </div>
-            <div class="brand-area-box">
-                <a href="#"><img src="img/brand/2.jpg" alt="brand"></a>
-            </div>
-            <div class="brand-area-box">
-                <a href="#"><img src="img/brand/3.jpg" alt="brand"></a>
-            </div>
-            <div class="brand-area-box">
-                <a href="#"><img src="img/brand/4.jpg" alt="brand"></a>
-            </div>
-        </div>
-    </div>
-</div>
+</div> --}}
+ {{-- // $('#question-form').on('submit', function(e) {
+//     e.preventDefault();
+
+//     var formData = {
+//         name: $('#form-name').val(),
+//         email: $('#form-email').val(),
+//         message: $('#sidebar-form-message').val(),
+//     };
+
+//     $.ajax({
+//         url: '{{ route("course.question.submit", $course->id) }}',
+//         method: 'POST',
+//         data: formData,
+//         headers: {
+//             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//         },
+//         success: function(response) {
+//             $('#question-form .form-response').html('<div class="alert alert-success">' + response.message + '</div>');
+//             $('#question-form')[0].reset();
+//         },
+//         error: function(xhr) {
+//             var errorMessage = 'Terjadi kesalahan. Silakan coba lagi.';
+//             if (xhr.responseJSON && xhr.responseJSON.message) {
+//                 errorMessage = xhr.responseJSON.message;
+//             }
+//             $('#question-form .form-response').html('<div class="alert alert-danger">' + errorMessage + '</div>');
+//         }
+//     });
+// }); --}}
 @endsection
 

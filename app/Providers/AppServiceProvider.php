@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('layouts.topnav', function ($view) {
             $universities = University::firstOrFail();
-            $courses = Course::all();
+            $courses = Course::orderBy('name')->get();
             $view->with('universities', $universities);
             $view->with('courses', $courses);
         });
