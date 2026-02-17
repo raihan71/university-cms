@@ -9,6 +9,7 @@ use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\TrixAttachmentController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\NewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +61,15 @@ Route::group(['prefix' => 'portal-admin', 'as' => 'portal-admin.'], function () 
             Route::put('/{teacher}', [TeacherController::class, 'update'])->name('update');
             Route::delete('/{teacher}', [TeacherController::class, 'destroy'])->name('destroy');
         });
+
+        Route::group(['prefix' => 'news', 'as' => 'news.'], function () {
+            Route::get('/', [NewsController::class, 'index'])->name('index');
+            Route::get('/create', [NewsController::class, 'create'])->name('create');
+            Route::post('/', [NewsController::class, 'store'])->name('store');
+            Route::get('/{news}/edit', [NewsController::class, 'edit'])->name('edit');
+            Route::put('/{news}', [NewsController::class, 'update'])->name('update');
+            Route::delete('/{news}', [NewsController::class, 'destroy'])->name('destroy');
+        });
     });
 });
 
@@ -68,18 +78,16 @@ Route::group(['prefix' => 'courses', 'as' => 'courses.'], function () {
     Route::get('/', [CoursesController::class, 'frontcourse'])->name('index');
     Route::get('/{course}', [CoursesController::class, 'frontcourseShow'])->name('show');
 });
+Route::group(['prefix' => 'news', 'as' => 'news.'], function () {
+    Route::get('/', [NewsController::class, 'frontnews'])->name('index');
+    Route::get('/{news}', [NewsController::class, 'frontnewsShow'])->name('show');
+});
 Route::get('/about', function () {
     return view('pages.about');
 })->name('about');
 Route::get('/contact', function () {
     return view('pages.contact');
 })->name('contact');
-Route::get('/news', function () {
-    return view('pages.news');
-})->name('news');
-Route::get('/events', function () {
-    return view('pages.events');
-})->name('events');
 Route::get('/gallery', function () {
     return view('pages.gallery');
 })->name('gallery');

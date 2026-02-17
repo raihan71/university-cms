@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Banners;
 use App\Models\Course;
+use App\Models\News;
 
 class FrontpageController extends Controller
 {
@@ -36,10 +36,12 @@ class FrontpageController extends Controller
             ->take(3)
             ->get();
         $courses = Course::orderBy('created_at', 'desc')->take(4)->get();
+        $newses = News::orderBy('created_at', 'desc')->take(4)->get();
         return view('pages.frontpage', [
             'services' => $services,
             'banners' => $banners,
-            'courses' => $courses
+            'courses' => $courses,
+            'newses' => $newses
         ]);
     }
 }

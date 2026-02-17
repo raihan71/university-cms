@@ -16,6 +16,9 @@
       <li class="nav-item mb-2">
         <a class="nav-link {{ request()->routeIs('portal-admin.teachers.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.teachers.index')}}"><i class="fa fa-chalkboard-teacher"></i> Pengajar/Dosen</a>
       </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link {{ request()->routeIs('portal-admin.news.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.news.index')}}"><i class="fa fa-newspaper"></i> Pengumuman</a>
+      </li>
     </ul>
   </div>
 </aside>

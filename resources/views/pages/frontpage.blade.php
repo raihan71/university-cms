@@ -60,28 +60,28 @@
     <div class="container courses-list-wrapper">
         <div class="row courses-wrapper courses-list">
             @foreach ($courses as $course)
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 courses-item">
-                <div class="courses-box2">
-                    <div class="single-item-wrapper">
-                        <div class="courses-img-wrapper hvr-bounce-to-right">
-                            <img loading="lazy" src="{{ asset('storage/'.$course->image) }}" class="img-responsive" alt="{{ $course->name }}">
-                            <a href="{{ route('courses.show', $course->slug) }}"><i class="fa fa-link" aria-hidden="true"></i></a>
-                        </div>
-                        <div class="courses-content-wrapper">
-                            <h3 class="item-title"><a href="{{ route('courses.show', $course->slug) }}">{{ $course->name }}</a></h3>
-                            <p class="item-content">{{ Str::limit($course->description, 50) }}</p>
-                            <ul class="courses-info">
-                                <li>4 Tahun
-                                    <br><span> Studi</span></li>
-                                <li>160
-                                    <br><span> SKS</span></li>
-                                <li>Karyawan - Regular
-                                    <br><span> Kelas</span></li>
-                            </ul>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 courses-item">
+                    <div class="courses-box2">
+                        <div class="single-item-wrapper">
+                            <div class="courses-img-wrapper hvr-bounce-to-right">
+                                <img loading="lazy" src="{{ asset('storage/'.$course->image) }}" class="img-responsive" alt="{{ $course->name }}">
+                                <a href="{{ route('courses.show', $course->slug) }}"><i class="fa fa-link" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="courses-content-wrapper">
+                                <h3 class="item-title"><a href="{{ route('courses.show', $course->slug) }}">{{ $course->name }}</a></h3>
+                                <p class="item-content">{{ Str::limit($course->description, 50) }}</p>
+                                <ul class="courses-info">
+                                    <li>4 Tahun
+                                        <br><span> Studi</span></li>
+                                    <li>160
+                                        <br><span> SKS</span></li>
+                                    <li>Karyawan - Regular
+                                        <br><span> Kelas</span></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             @endforeach
         </div>
         <div class="view-all-btn-area loadmore">
@@ -103,38 +103,20 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 news-inner-area">
-                <h2 class="title-default-left">Latest News</h2>
+                <h2 class="title-default-left">Berita Populer</h2>
                 <ul class="news-wrapper">
+                    @foreach ($newses as $news)
                     <li>
                         <div class="news-img-holder">
-                            <a href="#"><img src="img/news/1.jpg" class="img-responsive" alt="news"></a>
+                            <a href="{{ route('news.show', $news->slug)}}"><img src="{{ asset('storage/'.$news->image)}}" width="150" height="101" class="img-responsive" alt="{{$news->title}}-thumbanil"></a>
                         </div>
                         <div class="news-content-holder">
-                            <h3><a href="single-news.html">Summer Course Start From 1st June</a></h3>
-                            <div class="post-date">June 15, 2017</div>
-                            <p>Pellentese turpis dignissim amet area ducation process facilitating Knowledge.</p>
+                            <h3><a href="{{route('news.show', $news->slug)}}">{{$news->title}}</a></h3>
+                            <div class="post-date">{{$news->created_at->diffForHumans()}}</div>
+                            <p>{{Str::limit($news->description, 50)}}</p>
                         </div>
                     </li>
-                    <li>
-                        <div class="news-img-holder">
-                            <a href="#"><img src="img/news/2.jpg" class="img-responsive" alt="news"></a>
-                        </div>
-                        <div class="news-content-holder">
-                            <h3><a href="single-news.html">Guest Interview will Occur Soon</a></h3>
-                            <div class="post-date">June 15, 2017</div>
-                            <p>Pellentese turpis dignissim amet area ducation process facilitating Knowledge.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="news-img-holder">
-                            <a href="#"><img src="img/news/3.jpg" class="img-responsive" alt="news"></a>
-                        </div>
-                        <div class="news-content-holder">
-                            <h3><a href="single-news.html">Easy English Learning Way</a></h3>
-                            <div class="post-date">June 15, 2017</div>
-                            <p>Pellentese turpis dignissim amet area ducation process facilitating Knowledge.</p>
-                        </div>
-                    </li>
+                    @endforeach
                 </ul>
                 <div class="news-btn-holder">
                     <a href="#" class="view-all-accent-btn">View All</a>
