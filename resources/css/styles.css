@@ -8756,7 +8756,7 @@ ul.course-feature2 li:before {
     }
 }
 .brand-area {
-    padding: 70px 0;
+    padding: 70px 0 100px 0px;
     text-align: center;
     background: #f5f5f5;
 }

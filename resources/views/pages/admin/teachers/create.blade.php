@@ -41,12 +41,12 @@
               <input type="text" class="form-control" placeholder="Masukkan alamat" id="address" name="address">
           </div>
           <div class="form-group">
-            <label for="subject">Mata Kuliah</label>
-            <input type="text" placeholder="Masukkan mata kuliah yang diajarkan" class="form-control" id="subject" name="subject">
+            <label for="subject">Mata Kuliah / Fungsi</label>
+            <input type="text" placeholder="Contoh: Pengantar Teknologi Informasi / Administrasi TU" class="form-control" id="subject" name="subject">
           </div>
           <div class="form-group">
-              <label for="prodi">Prodi</label>
-              <select class="form-control" id="prodi" name="prodi" required>
+              <label for="prodi">Prodi <i>(isi jika dosen mata Kuliah)</i></label>
+              <select class="form-control" id="prodi" name="prodi">
                 <option value="" disabled selected>Pilih Prodi</option>
                 @foreach($courses as $course)
                     <option value="{{ $course->slug }}">{{ $course->name }}</option>

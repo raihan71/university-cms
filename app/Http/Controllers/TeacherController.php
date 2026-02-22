@@ -66,7 +66,8 @@ class TeacherController extends Controller
 
     public function edit(Teacher $teacher)
     {
-        return view('portal-admin.teachers.edit', compact('teacher'));
+        $courses = Course::all();
+        return view('pages.admin.teachers.edit', compact('teacher', 'courses'));
     }
 
     public function update(Request $request, Teacher $teacher)
@@ -85,18 +86,32 @@ class TeacherController extends Controller
             'instagram' => 'nullable|string|max:100',
             'facebook' => 'nullable|string|max:100',
             'website' => 'nullable|string|max:100',
-            'slug' => 'required|string|max:255|unique:teachers,slug,' . $teacher->id,
             'role' => 'nullable|string|max:100',
         ]);
 
-        $teacher->update($validated);
+        $teacher = Teacher::findOrFail($teacher->id);
+        $teacher->fill($validated);
+        $teacher->slug = \Str::slug($request->name);
+        $teacher->save();
 
-        return redirect()->route('portal-admin.teachers.index')->with('success', 'Teacher updated successfully.');
+        return redirect()->route('portal-admin.teachers.index')->with('success', 'Pengajar berhasil diperbarui.');
     }
 
     public function destroy(Teacher $teacher)
     {
         $teacher->delete();
-        return redirect()->route('portal-admin.teachers.index')->with('success', 'Teacher deleted successfully.');
+        return redirect()->route('portal-admin.teachers.index')->with('success', 'Pengajar berhasil dihapus.');
+    }
+
+    public function frontteachers()
+    {
+        $teachers = Teacher::latest()->paginate(10);
+        return view('pages.lectures', compact('teachers'));
+    }
+
+    public function frontteachersShow($slug)
+    {
+        $teacher = Teacher::where('slug', $slug)->firstOrFail();
+        return view('pages.details.lecture_detail', compact('teacher'));
     }
 }

@@ -2,6 +2,33 @@
 
 @section('title', 'Selamat Datang')
 
+@push('head')
+<style>
+.brand-area .brand-area-box {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 16px;
+}
+
+.brand-area .brand-area-box a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.brand-area .brand-area-box img {
+    width: 100%;
+    height: 100%;
+    max-width: 200px;
+    object-fit: contain;
+}
+</style>
+@endpush
+
 @section('content')
 <div class="slider1-area slider3-area overlay-default">
     <div class="bend niceties preview-1">
@@ -64,11 +91,11 @@
                     <div class="courses-box2">
                         <div class="single-item-wrapper">
                             <div class="courses-img-wrapper hvr-bounce-to-right">
-                                <img loading="lazy" src="{{ asset('storage/'.$course->image) }}" class="img-responsive" alt="{{ $course->name }}">
-                                <a href="{{ route('courses.show', $course->slug) }}"><i class="fa fa-link" aria-hidden="true"></i></a>
+                                <img loading="lazy" src="{{ asset('storage/'.$course->image) }}" class="img-responsive img-thumbnail" alt="{{ $course->name }}">
+                                <a href="{{ route('academic.courses.show', $course->slug) }}"><i class="fa fa-link" aria-hidden="true"></i></a>
                             </div>
                             <div class="courses-content-wrapper">
-                                <h3 class="item-title"><a href="{{ route('courses.show', $course->slug) }}">{{ $course->name }}</a></h3>
+                                <h3 class="item-title"><a href="{{ route('academic.courses.show', $course->slug) }}">{{ $course->name }}</a></h3>
                                 <p class="item-content">{{ Str::limit($course->description, 50) }}</p>
                                 <ul class="courses-info">
                                     <li>4 Tahun
@@ -92,10 +119,9 @@
 <div class="video-area overlay-video bg-common-style" style="background-image: url({{asset('img/about/building2.jpg')}}); background-position: center;">
     <div class="container">
         <div class="video-content">
-            <h2 class="video-title">Watch Campus Life Video Tour</h2>
-            <p class="video-sub-title">Vmply dummy text of the printing and typesetting industryorem
-                <br>Ipsum industry's standard dum an unknowramble.</p>
-            <a class="play-btn popup-youtube wow bounceInUp" data-wow-duration="2s" data-wow-delay=".1s" href="http://www.youtube.com/watch?v=1iIZeIy7TqM"><i class="fa fa-play" aria-hidden="true"></i></a>
+            <h2 class="video-title">Tonton Video Tour Kampus</h2>
+            <p class="video-sub-title">Kampus kami memiliki fasilitas yang lengkap dan modern. <br />Dapatkan pengalaman belajar yang menyenangkan dan berkualitas.</p>
+            <a class="play-btn popup-youtube wow bounceInUp" data-wow-duration="2s" data-wow-delay=".1s" href="{{ $socials->first()->link }}"><i class="fa fa-play" aria-hidden="true"></i></a>
         </div>
     </div>
 </div>
@@ -108,11 +134,11 @@
                     @foreach ($newses as $news)
                     <li>
                         <div class="news-img-holder">
-                            <a href="{{ route('news.show', $news->slug)}}"><img src="{{ asset('storage/'.$news->image)}}" width="150" height="101" class="img-responsive" alt="{{$news->title}}-thumbanil"></a>
+                            <a href="{{ route('news.show', $news->slug)}}"><img src="{{ asset('storage/'.$news->image)}}" width="150" height="101" class="img-responsive img-thumbnail" alt="{{$news->title}}-thumbanil"></a>
                         </div>
                         <div class="news-content-holder">
                             <h3><a href="{{route('news.show', $news->slug)}}">{{$news->title}}</a></h3>
-                            <div class="post-date">{{$news->created_at->diffForHumans()}}</div>
+                            <div class="post-date">{{$news->created_at->format('d M Y')}}</div>
                             <p>{{Str::limit($news->description, 50)}}</p>
                         </div>
                     </li>
@@ -125,40 +151,25 @@
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 event-inner-area">
                 <h2 class="title-default-left">Upcoming Events</h2>
                 <ul class="event-wrapper">
+                    @foreach ($events as $event)
                     <li class="wow bounceInUp" data-wow-duration="2s" data-wow-delay=".1s">
                         <div class="event-calender-wrapper">
                             <div class="event-calender-holder">
-                                <h3>26</h3>
-                                <p>Jan</p>
-                                <span>2017</span>
+                                <h3>{{ date('d', strtotime($event->event_date)) }}</h3>
+                                <p>{{ date('M', strtotime($event->event_date)) }}</p>
+                                <span>{{ date('Y', strtotime($event->event_date)) }}</span>
                             </div>
                         </div>
                         <div class="event-content-holder">
-                            <h3><a href="single-event.html">Html MeetUp Conference 2017</a></h3>
-                            <p>Pellentese turpis dignissim amet area ducation process facilitating Knowledge. Pellentese turpis dignissim amet area ducation process facilitating Knowledge. Pellentese turpis dignissim amet area ducation.</p>
+                            <h3><a href="single-event.html">{{ $event->title }}</a></h3>
+                            <p>{{ Str::limit($event->description, 100) }}</p>
                             <ul>
-                                <li>04:00 PM - 06:00 PM</li>
-                                <li>Australia , Melborn</li>
+                                <li>{{ date('H:i', strtotime($event->event_date)) }}</li>
+                                <li>{{ $event->location }}</li>
                             </ul>
                         </div>
                     </li>
-                    <li class="wow bounceInUp" data-wow-duration="2s" data-wow-delay=".3s">
-                        <div class="event-calender-wrapper">
-                            <div class="event-calender-holder">
-                                <h3>26</h3>
-                                <p>Jan</p>
-                                <span>2017</span>
-                            </div>
-                        </div>
-                        <div class="event-content-holder">
-                            <h3><a href="single-event.html">Workshop On UI Design</a></h3>
-                            <p>Pellentese turpis dignissim amet area ducation process facilitating Knowledge. Pellentese turpis dignissim amet area ducation process facilitating Knowledge. Pellentese turpis dignissim amet area ducation.</p>
-                            <ul>
-                                <li>03:00 PM - 05:00 PM</li>
-                                <li>Australia , Melborn</li>
-                            </ul>
-                        </div>
-                    </li>
+                    @endforeach
                 </ul>
                 <div class="event-btn-holder">
                     <a href="#" class="view-all-primary-btn">View All</a>
@@ -171,20 +182,20 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 counter1-box wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".20s">
-                <h2 class="about-counter title-bar-counter" data-num="80">80</h2>
-                <p>PROFESSIONAL TEACHER</p>
+                <h2 class="about-counter title-bar-counter" data-num="80">{{$university->count_teacher}}</h2>
+                <p>PROFESIONAL DOSEN</p>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 counter1-box wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".40s">
-                <h2 class="about-counter title-bar-counter" data-num="20">20</h2>
-                <p>NEWS COURSES EVERY YEARS</p>
+                <h2 class="about-counter title-bar-counter" data-num="20">{{$university->count_program}}</h2>
+                <p>PROGRAM STUDI TERBAIK</p>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 counter1-box wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".60s">
-                <h2 class="about-counter title-bar-counter" data-num="56">56</h2>
-                <p>NEWS COURSES EVERY YEARS</p>
+                <h2 class="about-counter title-bar-counter" data-num="56">{{$university->count_student}}</h2>
+                <p>MAHASISWA TERDAFTAR</p>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 counter1-box wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".80s">
-                <h2 class="about-counter title-bar-counter" data-num="77">77</h2>
-                <p>REGISTERED STUDENTS</p>
+                <h2 class="about-counter title-bar-counter" data-num="77">{{$university->count_alumni}}</h2>
+                <p>ALUMNI SEBELUMNYA</p>
             </div>
         </div>
     </div>
@@ -193,30 +204,11 @@
     <div class="container">
         <h2 class="title-default-center">Partner Kerja Sama</h2>
         <div class="rc-carousel" data-loop="true" data-items="4" data-margin="30" data-autoplay="true" data-autoplay-timeout="5000" data-smart-speed="2000" data-dots="false" data-nav="false" data-nav-speed="false" data-r-x-small="2" data-r-x-small-nav="false" data-r-x-small-dots="false" data-r-x-medium="3" data-r-x-medium-nav="false" data-r-x-medium-dots="false" data-r-small="4" data-r-small-nav="false" data-r-small-dots="false" data-r-medium="4" data-r-medium-nav="false" data-r-medium-dots="false" data-r-large="4" data-r-large-nav="false" data-r-large-dots="false">
+            @foreach ($partners as $partner)
             <div class="brand-area-box">
-                <a href="#"><img src="img/brand/1.jpg" alt="brand"></a>
+                <a href="javascript:void(0)"><img class="img-fluid img-thumbnail img-responsive" src="{{ asset('storage/' . $partner->logo) }}" alt="{{ $partner->name }}"></a>
             </div>
-            <div class="brand-area-box">
-                <a href="#"><img src="img/brand/2.jpg" alt="brand"></a>
-            </div>
-            <div class="brand-area-box">
-                <a href="#"><img src="img/brand/3.jpg" alt="brand"></a>
-            </div>
-            <div class="brand-area-box">
-                <a href="#"><img src="img/brand/4.jpg" alt="brand"></a>
-            </div>
-            <div class="brand-area-box">
-                <a href="#"><img src="img/brand/1.jpg" alt="brand"></a>
-            </div>
-            <div class="brand-area-box">
-                <a href="#"><img src="img/brand/2.jpg" alt="brand"></a>
-            </div>
-            <div class="brand-area-box">
-                <a href="#"><img src="img/brand/3.jpg" alt="brand"></a>
-            </div>
-            <div class="brand-area-box">
-                <a href="#"><img src="img/brand/4.jpg" alt="brand"></a>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
@@ -371,4 +363,3 @@
 //     });
 // }); --}}
 @endsection
-

@@ -17,6 +17,7 @@
               <th>Judul</th>
               <th>Deskripsi</th>
               <th>Tipe</th>
+              <th>Kategori</th>
               <th>Penulis</th>
               <th>Pengaturan</th>
           </tr>
@@ -30,6 +31,7 @@
               <td>
                 <span class="badge badge-info">{{ $item->type == 'news' ? 'Berita' : 'Pengumuman' }}</span>
               </td>
+              <td><span class="badge badge-secondary">{{ $item->category }}</span></td>
               <td><span class="badge badge-danger">{{ $item->author }}</span></td>
               <td>
                 <a href="{{ route('portal-admin.news.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>

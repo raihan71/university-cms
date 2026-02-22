@@ -17,14 +17,14 @@ class NewsController extends Controller
     public function create()
     {
         $categories = [
-            'Politics',
-            'Sports',
-            'Entertainment',
-            'Technology',
-            'Health',
-            'Business',
-            'Science',
-            'World',
+            'Politik',
+            'Olahraga',
+            'Hiburan',
+            'Teknologi',
+            'Kesehatan',
+            'Bisnis',
+            'Sains',
+            'Dunia',
         ];
         return view('pages.admin.news.create', compact('categories'));
     }
@@ -73,14 +73,14 @@ class NewsController extends Controller
     {
         $news = News::findOrFail($id);
         $categories = [
-            'Politics',
-            'Sports',
-            'Entertainment',
-            'Technology',
-            'Health',
-            'Business',
-            'Science',
-            'World',
+            'Politik',
+            'Olahraga',
+            'Hiburan',
+            'Teknologi',
+            'Kesehatan',
+            'Bisnis',
+            'Sains',
+            'Dunia',
         ];
         return view('pages.admin.news.edit', compact('news', 'categories'));
     }

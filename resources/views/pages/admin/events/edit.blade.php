@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title', 'News Management')
+@section('title', 'Event Management')
 
 @push('styles')
 <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
@@ -27,54 +27,40 @@
   <div class="p-1">
       @include('layouts.alert')
   </div>
-  <h1 class="mt-4">Buat Pengumuman/Berita</h1>
+  <h1 class="mt-4">Edit Acara</h1>
   <ol class="breadcrumb mb-4">
-      <li class="breadcrumb-item"><a href="{{ route('portal-admin.news.index') }}">Daftar Berita</a></li>
-      <li class="breadcrumb-item active">Buat Pengumuman Baru</li>
+      <li class="breadcrumb-item"><a href="{{ route('portal-admin.events.index') }}">Daftar Acara</a></li>
+      <li class="breadcrumb-item active">Edit Acara</li>
+      <li class="breadcrumb-item active">{{ $event->title }}</li>
   </ol>
   <div class="card">
     <div class="card-body">
-      <form action="{{ route('portal-admin.news.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('portal-admin.events.update', $event->id) }}" method="POST" enctype="multipart/form-data">
           @csrf
+          @method('PUT')
           <div class="form-group">
-              <label for="title">Judul Pengumuman/Berita</label>
-              <input autocomplete="off" type="text" class="form-control" id="title" name="title" required>
+              <label for="title">Nama Acara</label>
+              <input autocomplete="off" type="text" class="form-control" id="title" name="title" value="{{ $event->title }}" required>
           </div>
           <div class="form-group">
-              <label for="description">Deskripsi Program</label>
-              <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+              <label for="event_date">Tanggal Acara</label>
+              <input type="datetime-local" class="form-control" id="event_date" name="event_date" value="{{date('Y-m-d\TH:i', strtotime($event->event_date))}}" required>
           </div>
           <div class="form-group">
-            <label for="type">Tipe</label>
-            <select class="form-control" id="type" name="type" required>
-                <option value="" disabled selected>Pilih Tipe</option>
-                <option value="news">Berita</option>
-                <option value="announcement">Pengumuman</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="category">Kategori</label>
-            <select class="form-control" id="category" name="category">
-                <option value="" disabled selected>Pilih Kategori</option>
-                @foreach($categories as $index => $category)
-                    <option value="{{ $category }}">{{ $category }}</option>
-                @endforeach
-            </select>
-          </div>
-          <div class="form-group">
-              <label for="image">Gambar Sampul</label>
-              <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
+              <label for="location">Lokasi Acara</label>
+              <input autocomplete="off" type="text" class="form-control" id="location" name="location" value="{{ $event->location }}" required>
           </div>
           <div class="card mb-3">
               <div class="card-header">
-                  <label class="form-label" for="content">Konten Isi</label>
+                  <label class="form-label" for="description">Deskripsi Acara</label>
               </div>
               <div class="card-body">
-                  <input id="content_input" type="hidden" name="content" required>
-                  <trix-editor id="content" class="trix-content" input="content_input"></trix-editor>
+                  <input id="description_input" type="hidden" name="description">
+                  <trix-editor id="description" class="trix-content" input="description_input"></trix-editor>
               </div>
           </div>
-          <button type="submit" class="btn btn-primary">Simpan</button>
+          <button type="submit" class="btn btn-primary">Update</button>
+          <a href="{{ route('portal-admin.events.index') }}" class="btn btn-secondary ml-2">Batal</a>
       </form>
     </div>
   </div>
@@ -99,6 +85,21 @@
         }
 
         uploadTrixAttachment(event.attachment);
+    });
+
+    const trixInitialValues = {
+      description: {!! json_encode(old('description', $event->description)) !!},
+    };
+
+    Object.entries(trixInitialValues).forEach(([key, value]) => {
+        const input = document.getElementById(`${key}_input`);
+        const editor = document.querySelector(`trix-editor[input="${key}_input"]`);
+        if (input) {
+            input.value = value || '';
+        }
+        if (editor) {
+            editor.editor.loadHTML(value || '');
+        }
     });
 
     function uploadTrixAttachment(attachment) {

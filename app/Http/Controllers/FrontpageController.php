@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Banners;
 use App\Models\Course;
+use App\Models\Events;
 use App\Models\News;
+use App\Models\Partners;
+use App\Models\University;
+use App\Models\Social;
 
 class FrontpageController extends Controller
 {
@@ -36,12 +40,21 @@ class FrontpageController extends Controller
             ->take(3)
             ->get();
         $courses = Course::orderBy('created_at', 'desc')->take(4)->get();
-        $newses = News::orderBy('created_at', 'desc')->take(4)->get();
+        $newses = News::orderBy('created_at', 'desc')->take(3)->get();
+        $events = Events::orderBy('created_at', 'desc')->take(2)->get();
+        $university = University::firstOrFail();
+        $partners = Partners::orderBy('created_at', 'desc')->get();
+        $socials = Social::where('name', '=', 'youtube video-tour')->orderBy('name')->get();
+
         return view('pages.frontpage', [
             'services' => $services,
             'banners' => $banners,
             'courses' => $courses,
-            'newses' => $newses
+            'newses' => $newses,
+            'events' => $events,
+            'university' => $university,
+            'partners' => $partners,
+            'socials' => $socials,
         ]);
     }
 }

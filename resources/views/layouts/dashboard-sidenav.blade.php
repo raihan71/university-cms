@@ -19,6 +19,15 @@
       <li class="nav-item mb-2">
         <a class="nav-link {{ request()->routeIs('portal-admin.news.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.news.index')}}"><i class="fa fa-newspaper"></i> Pengumuman</a>
       </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link {{ request()->routeIs('portal-admin.events.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.events.index')}}"><i class="fa fa-calendar"></i> Acara</a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link {{ request()->routeIs('portal-admin.partners.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.partners.index')}}"><i class="fa fa-handshake"></i> Partner/Mitra</a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link {{ request()->routeIs('portal-admin.socials.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.socials.index')}}"><i class="fa fa-share-alt"></i> Sosial Media</a>
+      </li>
     </ul>
   </div>
 </aside>

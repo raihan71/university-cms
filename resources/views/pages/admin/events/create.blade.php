@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title', 'News Management')
+@section('title', 'Event Management')
 
 @push('styles')
 <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
@@ -27,51 +27,38 @@
   <div class="p-1">
       @include('layouts.alert')
   </div>
-  <h1 class="mt-4">Buat Pengumuman/Berita</h1>
+  <h1 class="mt-4">Buat Acara Baru</h1>
   <ol class="breadcrumb mb-4">
-      <li class="breadcrumb-item"><a href="{{ route('portal-admin.news.index') }}">Daftar Berita</a></li>
-      <li class="breadcrumb-item active">Buat Pengumuman Baru</li>
+      <li class="breadcrumb-item"><a href="{{ route('portal-admin.events.index') }}">Daftar Acara</a></li>
+      <li class="breadcrumb-item active">Buat Acara Baru</li>
   </ol>
   <div class="card">
     <div class="card-body">
-      <form action="{{ route('portal-admin.news.store') }}" method="POST" enctype="multipart/form-data">
+      <form action="{{ route('portal-admin.events.store') }}" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="form-group">
-              <label for="title">Judul Pengumuman/Berita</label>
+              <label for="title">Nama Acara</label>
               <input autocomplete="off" type="text" class="form-control" id="title" name="title" required>
           </div>
           <div class="form-group">
-              <label for="description">Deskripsi Program</label>
-              <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+              <label for="event_date">Tanggal Acara</label>
+              <input type="datetime-local" class="form-control" id="event_date" name="event_date" required>
           </div>
           <div class="form-group">
-            <label for="type">Tipe</label>
-            <select class="form-control" id="type" name="type" required>
-                <option value="" disabled selected>Pilih Tipe</option>
-                <option value="news">Berita</option>
-                <option value="announcement">Pengumuman</option>
-            </select>
+              <label for="location">Lokasi Acara</label>
+              <input type="text" class="form-control" id="location" name="location" required>
           </div>
           <div class="form-group">
-            <label for="category">Kategori</label>
-            <select class="form-control" id="category" name="category">
-                <option value="" disabled selected>Pilih Kategori</option>
-                @foreach($categories as $index => $category)
-                    <option value="{{ $category }}">{{ $category }}</option>
-                @endforeach
-            </select>
-          </div>
-          <div class="form-group">
-              <label for="image">Gambar Sampul</label>
-              <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
+              <label for="image">Foto Acara</label>
+              <input type="file" class="form-control" id="image" name="image" accept="image/*">
           </div>
           <div class="card mb-3">
               <div class="card-header">
-                  <label class="form-label" for="content">Konten Isi</label>
+                  <label class="form-label" for="description">Deskripsi Acara</label>
               </div>
               <div class="card-body">
-                  <input id="content_input" type="hidden" name="content" required>
-                  <trix-editor id="content" class="trix-content" input="content_input"></trix-editor>
+                  <input id="description_input" type="hidden" name="description">
+                  <trix-editor id="description" class="trix-content" input="description_input"></trix-editor>
               </div>
           </div>
           <button type="submit" class="btn btn-primary">Simpan</button>

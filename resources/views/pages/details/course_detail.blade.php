@@ -103,14 +103,14 @@
                                                 @foreach($teachers as $teacher)
                                                 <li>
                                                     <div class="skilled-lecturers-img">
-                                                        <a href="#"><img width="100" height="100" src="{{asset('storage/'.$teacher->photo)}}" class="img-responsive" alt="{{$teacher->name}}"></a>
+                                                        <a href="{{ route('teachers.show', $teacher->slug) }}"><img width="100" height="100" src="{{asset('storage/'.$teacher->photo)}}" class="img-responsive" alt="{{$teacher->name}}"></a>
                                                     </div>
                                                     <div class="skilled-lecturers-content">
-                                                        <h4><a href="#">{{$teacher->name}}</a></h4>
+                                                        <h4><a href="{{ route('teachers.show', $teacher->slug) }}">{{$teacher->name}}</a></h4>
                                                         <p>{{$teacher->subject}}</p>
                                                     </div>
                                                     <div class="skilled-lecturers-details">
-                                                        <a href="#" class="details-accent-btn">Details</a>
+                                                        <a href="{{ route('teachers.show', $teacher->slug) }}" class="details-accent-btn">Details</a>
                                                     </div>
                                                 </li>
                                                 @endforeach

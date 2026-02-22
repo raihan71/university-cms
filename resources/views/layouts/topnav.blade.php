@@ -29,39 +29,39 @@
                 <div class="col-lg-8 col-md-8 col-sm-8">
                     <nav id="desktop-nav">
                         <ul>
-                            <li class="active"><a href="{{route('frontpage')}}">Beranda</a>
+                            <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="{{route('frontpage')}}">Beranda</a>
                             </li>
-                            <li><a href="javascript:;">Profil</a>
+                            <li class="{{ request()->routeIs('profile.*') ? 'active' : '' }}"><a href="javascript:;">Profil</a>
                                 <ul>
                                     <li>
-                                        <a href="lecturers1.html">Sejarah Kampus</a>
+                                        <a href="{{ route('profile.about', ['about' => 'history']) }}">Sejarah Kampus</a>
                                     </li>
                                     <li>
-                                        <a href="lecturers2.html">Visi & Misi</a>
+                                        <a href="{{ route('profile.about', ['about' => 'vision']) }}">Visi & Misi</a>
                                     </li>
                                     <li>
-                                        <a href="pricing1.html">Pimpinan Institusi</a>
+                                        <a href="{{ route('profile.about', ['about' => 'leadership']) }}">Pimpinan Institusi</a>
                                     </li>
                                     <li>
-                                        <a href="pricing2.html">Struktur Organisasi</a>
+                                        <a href="{{ route('profile.about', ['about' => 'structure']) }}">Struktur Organisasi</a>
                                     </li>
                                     <li>
-                                        <a href="pricing3.html">Akreditasi Institusi</a>
+                                        <a href="{{ route('profile.about', ['about' => 'accreditation']) }}">Akreditasi Institusi</a>
                                     </li>
                                     <li>
-                                        <a href="pricing4.html">Identitas Institusi</a>
+                                        <a href="{{ route('profile.about', ['about' => 'identity']) }}">Identitas Institusi</a>
                                     </li>
                                     <li>
-                                        <a href="pricing4.html">Staff & Dosen</a>
+                                        <a href="{{ route('profile.teachers.index') }}">Staff & Dosen</a>
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="#">Akademik</a>
+                            <li class="{{ request()->routeIs('academic.*') ? 'active' : '' }}"><a href="javascript:;">Akademik</a>
                                 <ul>
                                     <li class="has-child-menu"><a href="javascript:;">Program Studi</a>
                                         <ul class="thired-level">
                                             @foreach($courses as $course)
-                                                <li><a href="{{route('courses.show', $course->slug)}}">{{ $course->name }}</a></li>
+                                                <li><a href="{{route('academic.courses.show', $course->slug)}}">{{ $course->name }}</a></li>
                                             @endforeach
                                         </ul>
                                     </li>

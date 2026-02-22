@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 use App\Models\University;
 use Illuminate\Support\Facades\Storage;
@@ -142,5 +143,36 @@ class UniversityController extends Controller
         imagedestroy($canvas);
 
         return $resizedContent ?: null;
+    }
+
+    public function frontProfile($about)
+    {
+        $profileAbout = '';
+        $tentang = [
+            'history' => 'Sejarah Kampus',
+            'vision' => 'Visi & Misi',
+            'mission' => 'Visi & Misi',
+            'accreditation' => 'Akreditasi Institusi',
+            'structure' => 'Struktur Organisasi',
+            'identity' => 'Identitas Institusi',
+            'leadership' => 'Pimpinan Institusi'
+        ][$about] ?? null;
+        $university = University::firstOrFail();
+        $teacher = Teacher::where('role', '!=', null)->get();
+        if ($about === 'history') {
+            $profileAbout = $university->history;
+        } elseif ($about === 'vision') {
+            $profileAbout = $university->vision;
+        } elseif ($about === 'mission') {
+            $profileAbout = $university->mission;
+        } elseif ($about === 'accreditation') {
+            $profileAbout = $university->accreditation;
+        } elseif ($about === 'structure') {
+            $profileAbout = $university->structure;
+        } elseif ($about === 'identity') {
+            $profileAbout = $university->identity;
+        }
+
+        return view('pages.profile', compact('university', 'profileAbout', 'tentang', 'about', 'teacher'));
     }
 }
