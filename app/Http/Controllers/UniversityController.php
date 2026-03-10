@@ -25,6 +25,7 @@ class UniversityController extends Controller
             'name' => 'required|string|max:255',
             'location' => 'required|string|max:255',
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'logo_2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             'email' => 'nullable|email',
             'phone' => 'nullable|string|max:255',
             'count_teacher' => 'nullable|string|max:255',
@@ -38,6 +39,7 @@ class UniversityController extends Controller
             'accreditation' => 'nullable|string',
             'structure' => 'nullable|string',
             'identity' => 'nullable|string',
+            'rules_policy' => 'nullable|string',
         ]);
 
         if ($request->hasFile('logo')) {
@@ -58,6 +60,27 @@ class UniversityController extends Controller
             } else {
                 // Fall back to original store if we cannot resize/compress
                 $validatedData['logo'] = $request->file('logo')->store('logos', 'public');
+            }
+        }
+
+        if ($request->hasFile('logo_2')) {
+            $resizedContent = $this->resizeAndCompress(
+                $request->file('logo_2'),
+                200,
+                300,
+                70, // JPEG quality
+                9   // PNG compression (0-9)
+            );
+
+            $filename = uniqid('logo_2_') . '.' . $request->file('logo_2')->getClientOriginalExtension();
+            $path = 'logos/' . $filename;
+
+            if ($resizedContent !== null) {
+                Storage::disk('public')->put($path, $resizedContent);
+                $validatedData['logo_2'] = $path;
+            } else {
+                // Fall back to original store if we cannot resize/compress
+                $validatedData['logo_2'] = $request->file('logo_2')->store('logos', 'public');
             }
         }
 

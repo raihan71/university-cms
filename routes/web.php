@@ -13,6 +13,11 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\SocialController;
+use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\FacilityController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\KemahasiswaanController;
+use App\Http\Controllers\ScholarshipController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -101,6 +106,51 @@ Route::group(['prefix' => 'portal-admin', 'as' => 'portal-admin.'], function () 
             Route::put('/{social}', [SocialController::class, 'update'])->name('update');
             Route::delete('/{social}', [SocialController::class, 'destroy'])->name('destroy');
         });
+
+        Route::group(['prefix' => 'calendar', 'as' => 'calendar.'], function () {
+            Route::get('/details', [CalendarController::class, 'details'])->name('details');
+            Route::put('/details/{id}', [CalendarController::class, 'updateDetails'])->name('updateDetails');
+            Route::get('/', [CalendarController::class, 'index'])->name('index');
+            Route::get('/create', [CalendarController::class, 'create'])->name('create');
+            Route::post('/', [CalendarController::class, 'store'])->name('store');
+            Route::get('/{calendar}/edit', [CalendarController::class, 'edit'])->name('edit');
+            Route::put('/{calendar}', [CalendarController::class, 'update'])->name('update');
+            Route::delete('/{calendar}', [CalendarController::class, 'destroy'])->name('destroy');
+        });
+
+        Route::group(['prefix' => 'facilities', 'as' => 'facilities.'], function () {
+            Route::get('/', [FacilityController::class, 'index'])->name('index');
+            Route::get('/create', [FacilityController::class, 'create'])->name('create');
+            Route::post('/', [FacilityController::class, 'store'])->name('store');
+            Route::get('/{facility}/edit', [FacilityController::class, 'edit'])->name('edit');
+            Route::put('/{facility}', [FacilityController::class, 'update'])->name('update');
+            Route::delete('/{facility}', [FacilityController::class, 'destroy'])->name('destroy');
+        });
+
+        Route::group(['prefix' => 'kemahasiswaan', 'as' => 'kemahasiswaan.'], function () {
+            Route::get('/', [KemahasiswaanController::class, 'index'])->name('index');
+            Route::get('/create', [KemahasiswaanController::class, 'create'])->name('create');
+            Route::post('/', [KemahasiswaanController::class, 'store'])->name('store');
+            Route::get('/{kemahasiswaan}/edit', [KemahasiswaanController::class, 'edit'])->name('edit');
+            Route::put('/{kemahasiswaan}', [KemahasiswaanController::class, 'update'])->name('update');
+            Route::delete('/{kemahasiswaan}', [KemahasiswaanController::class, 'destroy'])->name('destroy');
+        });
+
+        Route::group(['prefix' => 'scholarships', 'as' => 'scholarships.'], function () {
+            Route::get('/', [ScholarshipController::class, 'index'])->name('index');
+            Route::get('/create', [ScholarshipController::class, 'create'])->name('create');
+            Route::post('/', [ScholarshipController::class, 'store'])->name('store');
+            Route::get('/{scholarship}/edit', [ScholarshipController::class, 'edit'])->name('edit');
+            Route::put('/{scholarship}', [ScholarshipController::class, 'update'])->name('update');
+            Route::delete('/{scholarship}', [ScholarshipController::class, 'destroy'])->name('destroy');
+        });
+
+        Route::group(['prefix' => 'gallery', 'as' => 'gallery.'], function () {
+            Route::get('/', [GalleryController::class, 'index'])->name('index');
+            Route::get('/create', [GalleryController::class, 'create'])->name('create');
+            Route::post('/create', [GalleryController::class, 'store'])->name('store');
+            Route::delete('/{image}', [GalleryController::class, 'destroy'])->name('destroy');
+        });
     });
 });
 
@@ -110,6 +160,9 @@ Route::group(['prefix' => 'academic', 'as' => 'academic.'], function () {
         Route::get('/', [CoursesController::class, 'frontcourse'])->name('index');
         Route::get('/{course}', [CoursesController::class, 'frontcourseShow'])->name('show');
     });
+    Route::get('/calendar', [CalendarController::class, 'frontcalendar'])->name('calendar');
+    Route::get('/rules', [FrontpageController::class, 'frontrules'])->name('rules');
+    Route::get('/facilities', [FrontpageController::class, 'frontfacilities'])->name('facilities');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
     Route::get('/about/{about}', [UniversityController::class, 'frontProfile'])->name('about');
@@ -118,16 +171,23 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
         Route::get('/{teacher}', [TeacherController::class, 'frontteachersShow'])->name('show');
     });
 });
-Route::group(['prefix' => 'news', 'as' => 'news.'], function () {
-    Route::get('/', [NewsController::class, 'frontnews'])->name('index');
-    Route::get('/{news}', [NewsController::class, 'frontnewsShow'])->name('show');
+Route::group(['prefix' => 'info', 'as' => 'info.'], function () {
+    Route::group(['prefix' => 'news', 'as' => 'news.'], function () {
+        Route::post('/search', [NewsController::class, 'frontnews'])->name('search');
+        Route::get('/{type}', [NewsController::class, 'frontnewsType'])->name('type');
+        Route::get('/detail/{news}', [NewsController::class, 'frontnewsShow'])->name('show');
+    });
+    Route::group(['prefix' => 'events', 'as' => 'events.'], function () {
+        Route::get('/', [EventsController::class, 'frontevents'])->name('index');
+        Route::get('/{event}', [EventsController::class, 'fronteventsShow'])->name('show');
+    });
+    Route::get('/gallery', [GalleryController::class, 'frontgallery'])->name('gallery');
 });
-Route::get('/about', function () {
-    return view('pages.about');
-})->name('about');
+
+Route::group(['prefix' => 'services', 'as' => 'services.'], function () {
+    Route::get('/kemahasiswaan/{service}', [KemahasiswaanController::class, 'frontservicesShow'])->name('show');
+    Route::get('/kemahasiswaan-beasiswa', [ScholarshipController::class, 'frontservicesShow'])->name('scholarships.show');
+});
 Route::get('/contact', function () {
     return view('pages.contact');
 })->name('contact');
-Route::get('/gallery', function () {
-    return view('pages.gallery');
-})->name('gallery');

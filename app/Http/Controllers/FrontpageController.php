@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Banners;
 use App\Models\Course;
 use App\Models\Events;
+use App\Models\Facility;
+use App\Models\FacilityCategory;
 use App\Models\News;
 use App\Models\Partners;
 use App\Models\University;
@@ -55,6 +57,25 @@ class FrontpageController extends Controller
             'university' => $university,
             'partners' => $partners,
             'socials' => $socials,
+        ]);
+    }
+
+    public function frontrules()
+    {
+        $university = University::firstOrFail();
+
+        return view('pages.rules', [
+            'university' => $university,
+        ]);
+    }
+
+    public function frontfacilities()
+    {
+        $facilities = Facility::all();
+        $facilitiesCategories = FacilityCategory::getCategoryOptions();
+        return view('pages.facilities', [
+            'facilities' => $facilities,
+            'facilitiesCategories' => $facilitiesCategories,
         ]);
     }
 }

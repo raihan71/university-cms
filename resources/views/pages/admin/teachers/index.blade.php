@@ -16,6 +16,7 @@
               <th>No</th>
               <th>Nama Pengajar/Dosen</th>
               <th>Mata Kuliah</th>
+              <th>No Induk</th>
               <th>Prodi</th>
               <th>Jabatan</th>
               <th>Pengaturan</th>
@@ -27,6 +28,13 @@
               <td>{{ $index+1 }}</td>
               <td>{{ $teacher->name }}</td>
               <td>{{ Str::limit($teacher->subject, 100) }}</td>
+              <td>
+                @if($teacher->isCode && $teacher->nip)
+                    <span class="badge badge-secondary">{{ strtoupper($teacher->isCode) }}: {{ $teacher->nip }}</span>
+                @else
+                    -
+                @endif
+              </td>
               <td>
                 <span class="badge badge-success">{{ $teacher->prodi }}</span>
               </td>

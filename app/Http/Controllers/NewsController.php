@@ -113,15 +113,49 @@ class NewsController extends Controller
         return redirect()->route('portal-admin.news.index')->with('success', 'Berita berhasil diperbarui.');
     }
 
-    public function frontnews()
+    public function frontnews(Request $request)
     {
-        $news = News::latest()->paginate(10);
-        return view('pages.news', compact('news'));
+        $search = $request->input('search');
+        $news = News::latest();
+
+        if ($request->has('search')) {
+            $news->where('title', 'like', "%{$search}%");
+            $news->orWhere('description', 'like', "%{$search}%");
+        }
+
+        $news = $news->paginate(10);
+        return view('pages.search_news', [
+            'news' => $news,
+            'search' => $search
+        ]);
     }
 
     public function frontnewsShow($slug)
     {
         $news = News::where('slug', $slug)->firstOrFail();
         return view('pages.details.news_detail', compact('news'));
+    }
+
+    public function frontnewsType($type)
+    {
+        $news = News::where('type', $type)->latest()->paginate(10);
+        $type = $type === 'announcement' ? 'Pengumuman' : 'Berita';
+        $categories = [
+            'Politik',
+            'Olahraga',
+            'Hiburan',
+            'Teknologi',
+            'Kesehatan',
+            'Bisnis',
+            'Sains',
+            'Dunia',
+        ];
+        $hotNews = News::inRandomOrder()->take(5)->get();
+        return view('pages.news', [
+            'news' => $news,
+            'type' => $type,
+            'categories' => $categories,
+            'hotNews' => $hotNews
+        ]);
     }
 }

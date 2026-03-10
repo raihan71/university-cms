@@ -103,14 +103,14 @@
                                                 @foreach($teachers as $teacher)
                                                 <li>
                                                     <div class="skilled-lecturers-img">
-                                                        <a href="{{ route('teachers.show', $teacher->slug) }}"><img width="100" height="100" src="{{asset('storage/'.$teacher->photo)}}" class="img-responsive" alt="{{$teacher->name}}"></a>
+                                                        <a href="{{ route('profile.teachers.show', $teacher->slug) }}"><img width="100" height="100" src="{{asset('storage/'.$teacher->photo)}}" class="img-responsive" alt="{{$teacher->name}}"></a>
                                                     </div>
                                                     <div class="skilled-lecturers-content">
-                                                        <h4><a href="{{ route('teachers.show', $teacher->slug) }}">{{$teacher->name}}</a></h4>
-                                                        <p>{{$teacher->subject}}</p>
+                                                        <h4><a href="{{ route('profile.teachers.show', $teacher->slug) }}">{{$teacher->name}}</a></h4>
+                                                        <p>{{ Str::upper($teacher->isCode) }}: {{ $teacher->nip }} <br> <small>{{ $teacher->subject }}</small></p>
                                                     </div>
                                                     <div class="skilled-lecturers-details">
-                                                        <a href="{{ route('teachers.show', $teacher->slug) }}" class="details-accent-btn">Details</a>
+                                                        <a href="{{ route('profile.teachers.show', $teacher->slug) }}" class="details-accent-btn">Details</a>
                                                     </div>
                                                 </li>
                                                 @endforeach

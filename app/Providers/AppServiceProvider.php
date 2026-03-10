@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Models\University;
 use App\Models\Course;
 use App\Models\Social;
+use App\Models\Kemahasiswaan;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
             $courses = Course::orderBy('name')->get();
             $view->with('universities', $universities);
             $view->with('courses', $courses);
+            $view->with('kemahasiswaans', Kemahasiswaan::orderBy('name')->get());
         });
     }
 

@@ -56,6 +56,19 @@
             </div>
         </div>
         <div class="mb-3">
+            <label for="logo_2" class="form-label">Logo 2</label>
+            <input type="file" accept="image/*" class="form-control" id="logo_2" name="logo_2">
+            <div class="mt-2">
+                <img
+                    id="logo-preview_2"
+                    src="{{ $universities->logo_2 ? asset('storage/' . $universities->logo_2) : '' }}"
+                    alt="Logo preview"
+                    class="{{ $universities->logo_2 ? '' : 'd-none' }}"
+                    style="width: 200px; height: 300px; object-fit: contain; border: 1px solid #dee2e6; border-radius: 0.25rem;"
+                >
+            </div>
+        </div>
+        <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $universities->email) }}">
         </div>
@@ -141,6 +154,15 @@
                 <trix-editor id="identity" class="trix-content" input="identity_input"></trix-editor>
             </div>
         </div>
+        <div class="card mb-3">
+            <div class="card-header">
+                <label class="form-label" for="description">Aturan & Kebijakan</label>
+            </div>
+            <div class="card-body">
+                <input id="rules_policy_input" type="hidden" name="rules_policy" value="{{ old('rules_policy', $universities->rules_policy) }}">
+                <trix-editor id="rules_policy" class="trix-content" input="rules_policy_input"></trix-editor>
+            </div>
+        </div>
         <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
     </form>
 </div>
@@ -150,6 +172,8 @@
 <script type="text/javascript">
     const logoInput = document.getElementById('logo');
     const logoPreview = document.getElementById('logo-preview');
+    const logoInput2 = document.getElementById('logo_2');
+    const logoPreview2 = document.getElementById('logo-preview_2');
     const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
 
     if (logoInput) {
@@ -170,6 +194,23 @@
             reader.readAsDataURL(file);
         });
     }
+
+    logoInput2.addEventListener('change', (event) => {
+        const [file] = event.target.files;
+
+        if (!file) {
+            return;
+        }
+
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+            logoPreview2.src = e.target.result;
+            logoPreview2.classList.remove('d-none');
+        };
+
+        reader.readAsDataURL(file);
+    });
 
     document.addEventListener('trix-file-accept', (event) => {
         const maxFileSize = 5 * 1024 * 1024; // 5MB
@@ -195,6 +236,7 @@
         accreditation: {!! json_encode(old('accreditation', $universities->accreditation)) !!},
         structure: {!! json_encode(old('structure', $universities->structure)) !!},
         identity: {!! json_encode(old('identity', $universities->identity)) !!},
+        rules_policy: {!! json_encode(old('rules_policy', $universities->rules_policy)) !!},
     };
 
     Object.entries(trixInitialValues).forEach(([key, value]) => {

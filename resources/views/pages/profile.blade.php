@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- Inner Page Banner Area Start Here -->
-<div class="inner-page-banner-area pt-30" style="background: url('{{ asset('img/banner/3.jpg') }}'); background-position: top;">
+<div class="inner-page-banner-area pt-30" style="background: url('{{ asset('img/building3.jpg') }}'); background-position: top; background-repeat: no-repeat; background-size: cover;">
     <div class="container">
         <div class="pagination-area mt-30">
             <h1>{{ $tentang }}</h1>
@@ -59,6 +59,7 @@
                     <div class="lecturers-content-wrapper">
                         <h3 class="item-title"><a href="{{ route('profile.teachers.show', $item->slug) }}">{{ $item->name }}</a></h3>
                         <span class="item-designation">{{ $item->role }}</span>
+                        <h5>{{ Str::upper($item->isCode) }}: {{ $item->nip }}</h5>
                         <ul class="lecturers-social">
                             <li><a href="{{ $item->website }}"><i class="fa fa-globe" aria-hidden="true"></i></a></li>
                             <li><a href="{{ $item->linkedin }}"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>

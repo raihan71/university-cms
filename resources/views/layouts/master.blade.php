@@ -40,13 +40,13 @@
   @stack('head')
 </head>
 <body>
-  <div id="wrapper">
+  <div id="wrapper" style="min-height: 100vh; display: flex; flex-direction: column;">
     <header role="banner">
       @include('layouts.topnav')
       @include('layouts.mobilenav')
     </header>
 
-    <main id="main-content" tabindex="-1" role="main">
+    <main id="main-content" tabindex="-1" role="main" style="flex: 1;">
       @yield('content')
     </main>
 
@@ -57,7 +57,7 @@
               <div class="row">
                   <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                       <div class="footer-box">
-                        <a style="display: flex; align-items: center;" href="/"><img class="img-responsive" width="80" src="{{ $universities->logo ? asset('storage/' . $universities->logo) : asset('img/logo-footer.png') }}" alt="logo"><h3>{{ $universities->name }}</h3></a>
+                        <a style="display: flex; align-items: center;" href="/"><img class="img-responsive" src="{{ $universities->logo_2 ? asset('storage/' . $universities->logo_2) : asset('img/logo-footer.png') }}" alt="{{ $universities->name }} Logo"></a>
                           <div class="footer-about">
                               <p>{{ $universities->description }}</p>
                           </div>

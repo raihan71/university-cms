@@ -134,10 +134,10 @@
                     @foreach ($newses as $news)
                     <li>
                         <div class="news-img-holder">
-                            <a href="{{ route('news.show', $news->slug)}}"><img src="{{ asset('storage/'.$news->image)}}" width="150" height="101" class="img-responsive img-thumbnail" alt="{{$news->title}}-thumbanil"></a>
+                            <a href="{{ route('info.news.show', $news->slug)}}"><img src="{{ asset('storage/'.$news->image)}}" width="150" height="101" class="img-responsive img-thumbnail" alt="{{$news->title}}-thumbanil"></a>
                         </div>
                         <div class="news-content-holder">
-                            <h3><a href="{{route('news.show', $news->slug)}}">{{$news->title}}</a></h3>
+                            <h3><a href="{{route('info.news.show', $news->slug)}}">{{$news->title}}</a></h3>
                             <div class="post-date">{{$news->created_at->format('d M Y')}}</div>
                             <p>{{Str::limit($news->description, 50)}}</p>
                         </div>

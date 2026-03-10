@@ -65,52 +65,54 @@
                                             @endforeach
                                         </ul>
                                     </li>
-                                    <li><a href="courses2.html">Kalender Akademik</a></li>
-                                    <li><a href="courses3.html">Peraturan & Pedoman</a></li>
-                                    <li><a href="single-courses1.html">Layanan Akademik</a></li>
-                                    <li><a href="single-courses2.html">Fasilitas Akademik</a></li>
+                                    <li><a href="{{ route('academic.calendar') }}">Kalender Akademik</a></li>
+                                    <li><a href="{{ route('academic.rules') }}">Peraturan & Pedoman</a></li>
+                                    <li><a href="">Layanan Akademik</a></li>
+                                    <li><a href="{{ route('academic.facilities') }}">Fasilitas Akademik</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Layanan</a>
+                            <li class="{{ request()->routeIs('services.*') ? 'active' : '' }}"><a href="javascript:;">Layanan</a>
                                 <ul>
-                                    <li class="has-child-menu"><a href="gallery1.html">Kemahasiswaan</a>
+                                    <li class="has-child-menu"><a href="javascript:;">Kemahasiswaan</a>
                                         <ul class="thired-level">
-                                            <li><a href="gallery1.html">UKM</a></li>
-                                            <li><a href="gallery2.html">Beasiswa</a></li>
-                                            <li><a href="single-gallery.html">Layanan Konseling</a></li>
-                                            <li><a href="single-gallery.html">Alumni & Tracer Study</a></li>
+                                            @foreach($kemahasiswaans as $kemahasiswaan)
+                                                @if (Str::startsWith($kemahasiswaan->link, ['http', 'https']))
+                                                    <li><a href="{{ $kemahasiswaan->link }}" target="_blank">{{ $kemahasiswaan->name }}</a></li>
+                                                @else
+                                                <li><a href="{{ route('services.show', $kemahasiswaan->link) }}">{{ $kemahasiswaan->name }}</a></li>
+                                                @endif
+                                            @endforeach
+                                            <li><a href="{{ route('services.scholarships.show') }}">Beasiswa</a></li>
                                         </ul>
                                     </li>
                                     <li class="has-child-menu"><a href="gallery1.html">BAK</a>
                                         <ul class="thired-level">
-                                            <li><a href="gallery1.html">UKM</a></li>
-                                            <li><a href="gallery2.html">Beasiswa</a></li>
-                                            <li><a href="single-gallery.html">Layanan Konseling</a></li>
-                                            <li><a href="single-gallery.html">Alumni & Tracer Study</a></li>
+                                            <li><a href="gallery1.html">Panduan Pembayaran</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">LPM</a>
-                                    <li><a href="">LPPM</a></li>
-                                    <li><a href="">Al-Azami Press</a></li>
+                                    <li><a href="https://lpm.stitalazamicjr.ac.id/" target="_blank">LPM</a></li>
+                                    <li><a href="https://lppm.stitalazamicjr.ac.id/" target="_blank">LPPM</a></li>
+                                    <li><a href="#">Al-Azami Press</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Informasi</a>
+                            <li class="{{ request()->routeIs('info.*') ? 'active' : '' }}"><a href="javascript:void(0)">Informasi</a>
                                 <ul>
                                     <li class="has-child-menu"><a href="#">PMB</a>
                                         <ul class="thired-level">
-                                            <li><a href="gallery1.html">UKM</a></li>
-                                            <li><a href="gallery2.html">Beasiswa</a></li>
-                                            <li><a href="single-gallery.html">Layanan Konseling</a></li>
-                                            <li><a href="single-gallery.html">Alumni & Tracer Study</a></li>
+                                            <li><a href="gallery1.html">Informasi Pendaftaran</a></li>
+                                            <li><a href="gallery2.html">Pedoman PMB</a></li>
+                                            <li><a href="single-gallery.html">Brosur PMB</a></li>
+                                            <li><a href="single-gallery.html">Jalur Beasiswa</a></li>
+                                            <li><a href="single-gallery.html">Jalur Pindahan</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">Pengumuman</a></li>
-                                    <li><a href="#">Berita</a></li>
-                                    <li><a href="#">Acara</a></li>
-                                    <li><a href="#">Galeri</a></li>
+                                    <li><a href="{{ route('info.news.type', 'announcement') }}">Pengumuman</a></li>
+                                    <li><a href="{{ route('info.news.type', 'news') }}">Berita</a></li>
+                                    <li><a href="{{ route('info.events.index') }}">Acara</a></li>
+                                    <li><a href="{{ route('info.gallery') }}">Galeri</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Kontak</a></li>
+                            <li><a href="{{ route('contact') }}">Kontak</a></li>
                         </ul>
                     </nav>
                 </div>

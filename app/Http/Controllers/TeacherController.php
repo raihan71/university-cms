@@ -37,6 +37,8 @@ class TeacherController extends Controller
             'facebook' => 'nullable|string|max:100',
             'website' => 'nullable|string|max:100',
             'role' => 'nullable|string|max:100',
+            'isCode' => 'nullable|string|max:100',
+            'nip' => 'nullable|string|max:100',
         ]);
 
         $teacher = new Teacher();
@@ -54,6 +56,8 @@ class TeacherController extends Controller
         $teacher->website = $request->website;
         $teacher->slug = \Str::slug($request->name);
         $teacher->role = $request->role;
+        $teacher->isCode = $request->isCode;
+        $teacher->nip = $request->nip;
         if ($request->hasFile('photo')) {
             $path = $request->file('photo')->store('teachers', 'public');
             $teacher->photo = $path;
@@ -87,6 +91,8 @@ class TeacherController extends Controller
             'facebook' => 'nullable|string|max:100',
             'website' => 'nullable|string|max:100',
             'role' => 'nullable|string|max:100',
+            'isCode' => 'nullable|string|max:100',
+            'nip' => 'nullable|string|max:100',
         ]);
 
         $teacher = Teacher::findOrFail($teacher->id);

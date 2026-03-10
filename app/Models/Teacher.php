@@ -25,5 +25,7 @@ class Teacher extends Model
         'website',
         'role',
         'slug',
+        'isCode',
+        'nip',
     ];
 }

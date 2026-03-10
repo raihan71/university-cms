@@ -10,7 +10,7 @@
             <h1>{{ $news->title }}</h1>
             <ul>
                 <li><a href="{{ route('frontpage') }}">Beranda</a></li>
-                <li><a href="{{ route('news.index') }}">Berita</a></li>
+                <li><a href="{{ route('info.news.type', $news->type) }}">{{ $news->type == 'berita' ? 'Berita' : 'Pengumuman' }}</a></li>
                 <li>{{ $news->title }}</li>
             </ul>
         </div>

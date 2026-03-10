@@ -28,6 +28,18 @@
       <li class="nav-item mb-2">
         <a class="nav-link {{ request()->routeIs('portal-admin.socials.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.socials.index')}}"><i class="fa fa-share-alt"></i> Sosial Media</a>
       </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link {{ request()->routeIs('portal-admin.calendar.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.calendar.index')}}"><i class="fa fa-calendar-alt"></i> Kalender Akademik</a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link {{ request()->routeIs('portal-admin.facilities.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.facilities.index')}}"><i class="fa fa-building"></i> Fasilitas</a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link {{ request()->routeIs('portal-admin.kemahasiswaan.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.kemahasiswaan.index')}}"><i class="fa fa-users"></i> Kemahasiswaan</a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link {{ request()->routeIs('portal-admin.scholarships.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.scholarships.index')}}"><i class="fa fa-graduation-cap"></i> Beasiswa</a>
+      </li>
     </ul>
   </div>
 </aside>
