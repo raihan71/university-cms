@@ -78,4 +78,12 @@ class FrontpageController extends Controller
             'facilitiesCategories' => $facilitiesCategories,
         ]);
     }
+
+    public function frontcontact()
+    {
+        $university = University::firstOrFail();
+        return view('pages.contact', [
+            'university' => $university,
+        ]);
+    }
 }

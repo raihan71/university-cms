@@ -10,6 +10,7 @@
       <meta name="description" content=""/>
       <meta name="author" content=""/>
       <title>{{env('APP_NAME')}} - @yield('title')</title>
+      <link rel="shortcut icon" type="image/x-icon" href="{{ $universities->logo ? asset('storage/' . $universities->logo) : asset('img/logo-textprimary.png') }}">
       <link
           rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">

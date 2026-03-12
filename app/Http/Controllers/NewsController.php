@@ -133,7 +133,18 @@ class NewsController extends Controller
     public function frontnewsShow($slug)
     {
         $news = News::where('slug', $slug)->firstOrFail();
-        return view('pages.details.news_detail', compact('news'));
+        $categories = [
+            'Politik',
+            'Olahraga',
+            'Hiburan',
+            'Teknologi',
+            'Kesehatan',
+            'Bisnis',
+            'Sains',
+            'Dunia',
+        ];
+        $hotNews = News::inRandomOrder()->take(5)->get();
+        return view('pages.details.news_detail', compact('news', 'categories', 'hotNews'));
     }
 
     public function frontnewsType($type)

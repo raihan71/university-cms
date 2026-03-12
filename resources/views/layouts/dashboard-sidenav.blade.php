@@ -40,6 +40,9 @@
       <li class="nav-item mb-2">
         <a class="nav-link {{ request()->routeIs('portal-admin.scholarships.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.scholarships.index')}}"><i class="fa fa-graduation-cap"></i> Beasiswa</a>
       </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link {{ request()->routeIs('portal-admin.gallery.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.gallery.index')}}"><i class="fa fa-photo-video"></i> Galeri</a>
+      </li>
     </ul>
   </div>
 </aside>

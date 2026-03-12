@@ -2,12 +2,6 @@
 
 @section('title', 'Berita & Pemberitahuan')
 
-@push('head')
-<link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
-<script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
-@endpush
-
-
 @section('content')
 <!-- Inner Page Banner Area Start Here -->
 <div class="inner-page-banner-area pt-30" style="background: url('{{ asset('img/course/course-detail.jpg') }}'); background-position: contain;">

@@ -8,7 +8,7 @@
   <meta name="description" content="@yield('meta_description', 'Default site description')">
   <meta name="keywords" content="@yield('meta_keywords', 'keyword1, keyword2')">
   <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/favicon.png') }}">
+  <link rel="shortcut icon" type="image/x-icon" href="{{ $universities->logo ? asset('storage/' . $universities->logo) : asset('img/logo-textprimary.png') }}">
   <!-- Normalize CSS -->
   <link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
   <!-- Bootstrap CSS -->
@@ -16,6 +16,7 @@
   <!-- Animate CSS -->
   <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
   <!-- Font-awesome CSS-->
+  <link rel="stylesheet" href="{{ asset('css/font-custom.css') }}">
   <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
   <!-- Owl Caousel CSS -->
   <link rel="stylesheet" href="{{ asset('vendor/OwlCarousel/owl.carousel.min.css') }}">

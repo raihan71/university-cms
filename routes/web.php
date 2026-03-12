@@ -149,7 +149,7 @@ Route::group(['prefix' => 'portal-admin', 'as' => 'portal-admin.'], function () 
             Route::get('/', [GalleryController::class, 'index'])->name('index');
             Route::get('/create', [GalleryController::class, 'create'])->name('create');
             Route::post('/create', [GalleryController::class, 'store'])->name('store');
-            Route::delete('/{image}', [GalleryController::class, 'destroy'])->name('destroy');
+            Route::delete('/{gallery}', [GalleryController::class, 'destroy'])->name('destroy');
         });
     });
 });
@@ -188,6 +188,5 @@ Route::group(['prefix' => 'services', 'as' => 'services.'], function () {
     Route::get('/kemahasiswaan/{service}', [KemahasiswaanController::class, 'frontservicesShow'])->name('show');
     Route::get('/kemahasiswaan-beasiswa', [ScholarshipController::class, 'frontservicesShow'])->name('scholarships.show');
 });
-Route::get('/contact', function () {
-    return view('pages.contact');
-})->name('contact');
+
+Route::get('/contact', [FrontpageController::class, 'frontcontact'])->name('contact');

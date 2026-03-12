@@ -29,6 +29,16 @@ class AppServiceProvider extends ServiceProvider
             $view->with('courses', $courses);
             $view->with('kemahasiswaans', Kemahasiswaan::orderBy('name')->get());
         });
+
+        view()->composer('layouts.dashboard', function ($view) {
+            $universities = University::firstOrFail();
+            $view->with('universities', $universities);
+        });
+
+        view()->composer('layouts.auth', function ($view) {
+            $universities = University::firstOrFail();
+            $view->with('universities', $universities);
+        });
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Events;
+use App\Models\News;
 
 class EventsController extends Controller
 {
@@ -75,5 +76,19 @@ class EventsController extends Controller
     {
         $event->delete();
         return redirect()->route('portal-admin.events.index')->with('success', 'Acara berhasil dihapus.');
+    }
+
+    public function frontevents()
+    {
+        $events = Events::latest()->paginate(10);
+        return view('pages.events', compact('events'));
+    }
+
+    public function fronteventsShow($slug)
+    {
+        $event = Events::where('slug', $slug)->firstOrFail();
+        $hotNews = News::inRandomOrder()->take(5)->get();
+
+        return view('pages.details.event_detail', compact('event', 'hotNews'));
     }
 }

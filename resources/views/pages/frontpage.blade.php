@@ -73,7 +73,11 @@
 </div>
 <div class="about1-area">
     <div class="container">
-        <h1 class="about-title wow fadeIn" data-wow-duration="1s" data-wow-delay=".2s">Wilujeung Sumping</h1>
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <h2 class="text-bold">⋆⭒˚｡⋆</h2>
+            <h1 class="about-title wow fadeIn text-janna" data-wow-duration="1s" data-wow-delay=".2s">أَهْلًا وَسَهْلًا</h1>
+            <h2 class="text-bold">⋆⭒˚｡⋆</h2>
+        </div>
         <p class="about-sub-title wow fadeIn" data-wow-duration="1s" data-wow-delay=".2s">Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.</p>
         <div class="about-img-holder wow fadeIn" data-wow-duration="2s" data-wow-delay=".2s">
             <img src="{{asset('img/team/team1.png')}}" width="650" height="328" alt="about" class="img-responsive" />

@@ -112,7 +112,7 @@
                                     <li><a href="{{ route('info.gallery') }}">Galeri</a></li>
                                 </ul>
                             </li>
-                            <li><a href="{{ route('contact') }}">Kontak</a></li>
+                            <li class="{{ request()->routeIs('contact') ? 'active' : '' }}"><a href="{{ route('contact') }}">Kontak</a></li>
                         </ul>
                     </nav>
                 </div>

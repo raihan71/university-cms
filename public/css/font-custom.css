@@ -1,0 +1,9 @@
+@font-face {
+    font-family: janna_LT; /* set name */
+    src: url(../fonts/janna_LT_bold.ttf); /* url of the font */
+}
+
+.text-janna {
+    font-family: janna_LT, sans-serif; /* use the font */
+    font-weight: bold;
+}
