@@ -3,6 +3,7 @@
 @section('title', 'Kontak kami')
 
 @push('head')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
         .google-map-area iframe {
             width: 100%;
@@ -48,7 +49,7 @@
                 </div>
                 <div class="row">
                     <div class="contact-form2">
-                        <form id="contact-form">
+                        <form id="contact-form" role="form">
                             <fieldset>
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -64,7 +65,7 @@
                                 </div>
                                 <div class="ol-sm-12">
                                     <div class="form-group">
-                                        <textarea placeholder="Message*" class="textarea form-control" name="message" id="form-message" rows="8" cols="20" data-error="Message field is required" required></textarea>
+                                        <textarea placeholder="Pesan*" class="textarea form-control" name="message" id="form-message" rows="8" cols="20" data-error="Message field is required" required></textarea>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -73,9 +74,7 @@
                                         <button type="submit" class="default-big-btn">Send Message</button>
                                     </div>
                                 </div>
-                                <div class="col-lg-8 col-md-8 col-sm-6 col-sm-12">
-                                    <div class='form-response'></div>
-                                </div>
+                                <div class='form-response'></div>
                             </fieldset>
                         </form>
                     </div>
@@ -92,3 +91,39 @@
     </div>
 </div>
 @stop
+
+@push('scripts')
+    <script>
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+
+        $('#contact-form').on('submit', function(e) {
+            e.preventDefault();
+
+            var formData = {
+                name: $('#form-name').val(),
+                email: $('#form-email').val(),
+                message: $('#sidebar-form-message').val(),
+                };
+
+            $.ajax({
+                url: '{{ route("contact.sendEmail") }}',
+                method: 'POST',
+                data: formData,
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken
+                },
+                success: function(response) {
+                    $('#contact-form .form-response').html('<div class="alert alert-success">' + response.message + '</div>');
+                    $('#contact-form')[0].reset();
+                },
+                error: function(xhr) {
+                    var errorMessage = 'Terjadi kesalahan. Silakan coba lagi.';
+                    if (xhr.responseJSON && xhr.responseJSON.message) {
+                        errorMessage = xhr.responseJSON.message;
+                    }
+                    $('#contact-form .form-response').html('<div class="alert alert-danger">' + errorMessage + '</div>');
+                }
+            });
+        });
+    </script>
+@endpush

@@ -224,5 +224,5 @@ Route::group(['prefix' => 'services', 'as' => 'services.'], function () {
 });
 
 Route::get('/contact', [FrontpageController::class, 'frontcontact'])->name('contact');
-Route::post('/course/send-email', [MailController::class, 'askQuestionProgram
-'])->name('course.sendEmail');
+Route::post('/course/send-email', [MailController::class, 'askQuestionProgram'])->name('course.sendEmail');
+Route::post('/contact/send-email', [MailController::class, 'contact'])->name('contact.sendEmail');

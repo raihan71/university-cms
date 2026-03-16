@@ -116,7 +116,7 @@
             @endforeach
         </div>
         <div class="view-all-btn-area loadmore">
-            <a href="#" class="view-all-accent-btn">View All Corses</a>
+            <a href="#" class="view-all-accent-btn">Lihat Semua</a>
         </div>
     </div>
 </div>
@@ -149,7 +149,7 @@
                     @endforeach
                 </ul>
                 <div class="news-btn-holder">
-                    <a href="#" class="view-all-accent-btn">View All</a>
+                    <a href="#" class="view-all-accent-btn">Lihat Semua</a>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 event-inner-area">
@@ -176,7 +176,7 @@
                     @endforeach
                 </ul>
                 <div class="event-btn-holder">
-                    <a href="#" class="view-all-primary-btn">View All</a>
+                    <a href="#" class="view-all-primary-btn">Lihat Semua</a>
                 </div>
             </div>
         </div>

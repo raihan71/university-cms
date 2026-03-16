@@ -71,22 +71,22 @@
                   </div>
                   <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                       <div class="footer-box links-featured">
-                          <h3>Featured Links</h3>
+                          <h3>Link Lainnya</h3>
                           <ul class="featured-links">
                               <li>
                                   <ul>
-                                      <li><a href="#">Graduation</a></li>
-                                      <li><a href="#">Admissions</a></li>
-                                      <li><a href="#">International</a></li>
-                                      <li><a href="#">FAQs</a></li>
+                                      <li><a href="{{ route('services.scholarships.show') }}">Beasiswa</a></li>
+                                      <li><a href="{{ route('info.pmb.show', 'register') }}">Penerimaan</a></li>
+                                      <li><a href="{{ url('/') }}">Internasional</a></li>
+                                      <li><a href="{{ route('contact') }}">FAQs</a></li>
                                   </ul>
                               </li>
                               <li>
                                   <ul>
-                                      <li><a href="#">Courses</a></li>
-                                      <li><a href="#">About Us</a></li>
-                                      <li><a href="#">Book store</a></li>
-                                      <li><a href="#">Alumni</a></li>
+                                      <li><a href="{{ route('academic.courses.index') }}">Program Studi</a></li>
+                                      <li><a href="{{ route('profile.about', 'history') }}">Tentang Kami</a></li>
+                                      <li><a href="{{ url('/') }}">UKM Program</a></li>
+                                      <li><a href="{{ url('/') }}">Alumni</a></li>
                                   </ul>
                               </li>
                           </ul>
@@ -94,20 +94,20 @@
                   </div>
                   <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                       <div class="footer-box">
-                          <h3>Information</h3>
+                          <h3>Informasi</h3>
                           <ul class="corporate-address">
                               <li><i class="fa fa-phone" aria-hidden="true"></i><a href="Phone(01)800433633.html"> {{ $universities->phone }} </a></li>
                               <li><i class="fa fa-envelope-o" aria-hidden="true"></i>{{ $universities->email }}</li>
                           </ul>
                           <div class="newsletter-area">
-                              <h3>Newsletter</h3>
+                              <h3>Gabung Newsletter</h3>
                               <div class="input-group stylish-input-group">
-                                  <input type="text" placeholder="Enter your e-mail here" class="form-control">
+                                  <input type="text" placeholder="Masukkan email Anda" class="form-control">
                                   <span class="input-group-addon">
-                                          <button type="submit">
-                                              <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                                          </button>  
-                                      </span>
+                                    <button type="submit">
+                                        <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                                    </button>  
+                                </span>
                               </div>
                           </div>
                       </div>

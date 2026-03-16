@@ -150,7 +150,7 @@
                                             <div class="help-block with-errors"></div>
                                         </div>
                                         <div class="form-group">
-                                            <textarea placeholder="Message*" class="textarea form-control" name="message" id="sidebar-form-message" rows="3" cols="20" data-error="Message field is required" autocomplete="off" required></textarea>
+                                            <textarea placeholder="Pesan*" class="textarea form-control" name="message" id="sidebar-form-message" rows="3" cols="20" data-error="Message field is required" autocomplete="off" required></textarea>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                         <div class="form-group">
