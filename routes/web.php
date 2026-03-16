@@ -17,7 +17,12 @@ use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\KemahasiswaanController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\ScholarshipController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PMBController;
+use App\Http\Controllers\UsersController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -151,6 +156,31 @@ Route::group(['prefix' => 'portal-admin', 'as' => 'portal-admin.'], function () 
             Route::post('/create', [GalleryController::class, 'store'])->name('store');
             Route::delete('/{gallery}', [GalleryController::class, 'destroy'])->name('destroy');
         });
+
+        Route::group(['prefix' => 'payment', 'as' => 'payment.'], function () {
+            Route::get('/', [PaymentController::class, 'index'])->name('index');
+            Route::get('/create', [PaymentController::class, 'create'])->name('create');
+            Route::post('/', [PaymentController::class, 'store'])->name('store');
+            Route::delete('/{payment}', [PaymentController::class, 'destroy'])->name('destroy');
+        });
+
+        Route::group(['prefix' => 'pmb', 'as' => 'pmb.'], function () {
+            Route::get('/', [PMBController::class, 'index'])->name('index');
+            Route::get('/create', [PMBController::class, 'create'])->name('create');
+            Route::get('/detail', [PMBController::class, 'detail'])->name('detail');
+            Route::put('/detail/{id}', [PMBController::class, 'storeDetail'])->name('storeDetail');
+            Route::post('/', [PMBController::class, 'store'])->name('store');
+            Route::delete('/{pmb}', [PMBController::class, 'destroy'])->name('destroy');
+        });
+
+        Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
+            Route::get('/', [UsersController::class, 'index'])->name('index');
+            Route::get('/create', [UsersController::class, 'create'])->name('create');
+            Route::post('/', [UsersController::class, 'store'])->name('store');
+            Route::get('/{user}/edit', [UsersController::class, 'edit'])->name('edit');
+            Route::put('/{user}', [UsersController::class, 'update'])->name('update');
+            Route::delete('/{user}', [UsersController::class, 'destroy'])->name('destroy');
+        });
     });
 });
 
@@ -182,11 +212,17 @@ Route::group(['prefix' => 'info', 'as' => 'info.'], function () {
         Route::get('/{event}', [EventsController::class, 'fronteventsShow'])->name('show');
     });
     Route::get('/gallery', [GalleryController::class, 'frontgallery'])->name('gallery');
+    Route::group(['prefix' => 'pmb', 'as' => 'pmb.'], function () {
+        Route::get('/{pmb}', [PMBController::class, 'frontpmbShow'])->name('show');
+    });
 });
 
 Route::group(['prefix' => 'services', 'as' => 'services.'], function () {
     Route::get('/kemahasiswaan/{service}', [KemahasiswaanController::class, 'frontservicesShow'])->name('show');
     Route::get('/kemahasiswaan-beasiswa', [ScholarshipController::class, 'frontservicesShow'])->name('scholarships.show');
+    Route::get('/baak/pmb', [PaymentController::class, 'frontservicesShow'])->name('pmb.show');
 });
 
 Route::get('/contact', [FrontpageController::class, 'frontcontact'])->name('contact');
+Route::post('/course/send-email', [MailController::class, 'askQuestionProgram
+'])->name('course.sendEmail');

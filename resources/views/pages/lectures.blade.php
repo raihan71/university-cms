@@ -30,7 +30,7 @@
                         </div>
                         <div class="lecturers-content-wrapper">
                             <h3 class="item-title"><a href="{{ route('profile.teachers.show', $item->slug) }}">{{ $item->name }}</a></h3>
-                            <span class="item-designation">{{ $item->role }}</span>
+                            <span class="item-designation">{{ $item->subject }}</span>
                             <h5>{{ Str::upper($item->isCode) }}: {{ $item->nip }}</h5>
                             <ul class="lecturers-social">
                                 <li><a href="{{ $item->web }}"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>

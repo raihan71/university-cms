@@ -81,7 +81,7 @@ class FrontpageController extends Controller
 
     public function frontcontact()
     {
-        $university = University::firstOrFail();
+        $university = University::first();
         return view('pages.contact', [
             'university' => $university,
         ]);

@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title', 'Course Management')
+@section('title', 'Calendar Management')
 @section('content')
 <div class="container-fluid mb-4">
   <div class="p-1">

@@ -27,6 +27,7 @@ class University extends Model
         'count_alumni',
         'count_program',
         'logo_2',
-        'rules_policy'
+        'rules_policy',
+        'map',
     ];
 }

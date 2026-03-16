@@ -40,6 +40,7 @@ class UniversityController extends Controller
             'structure' => 'nullable|string',
             'identity' => 'nullable|string',
             'rules_policy' => 'nullable|string',
+            'map' => 'nullable|string',
         ]);
 
         if ($request->hasFile('logo')) {

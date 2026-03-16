@@ -20,7 +20,7 @@
 </div>
 <div class="about-page1-area">
     <div class="container">
-        <h2 class="title-default-left">Peringkat Akreditasi Terbaru</h2>
+        <h2 class="title-default-left">Kalender Akademik Terbaru</h2>
         <div class="row about-page1-inner">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="about-page-content-holder">

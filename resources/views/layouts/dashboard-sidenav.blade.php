@@ -1,20 +1,39 @@
 <aside class="d-flex flex-column min-vh-100 border-end bg-dark overflow-y-auto" style="width: 300px;">
   <div class="sidebar p-3">
     <ul class="nav flex-column">
-      <li class="nav-item mb-2">
+      <li class="nav-item text-uppercase text-white-50 fw-semibold small mb-2" role="presentation">Main Menu</li>
+      <li class="nav-item mb-3">
         <a class="nav-link {{ request()->routeIs('portal-admin.dashboard') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.dashboard')}}"><i class="fa fa-tachometer-alt"></i> Dashboard</a>
       </li>
-      <li class="nav-item mb-2">
-        <a class="nav-link {{ request()->routeIs('portal-admin.settings.index') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.settings.index')}}"><i class="fa fa-cog"></i> Pengaturan Kampus</a>
-      </li>
-      <li class="nav-item mb-2">
-        <a class="nav-link {{ request()->routeIs('portal-admin.banners.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.banners.index')}}"><i class="fa fa-image"></i> Banner</a>
-      </li>
+
+      <li class="nav-item text-uppercase text-white-50 fw-semibold small mb-2" role="presentation">Akademik</li>
       <li class="nav-item mb-2">
         <a class="nav-link {{ request()->routeIs('portal-admin.courses.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.courses.index')}}"><i class="fa fa-book"></i> Program Studi</a>
       </li>
       <li class="nav-item mb-2">
         <a class="nav-link {{ request()->routeIs('portal-admin.teachers.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.teachers.index')}}"><i class="fa fa-chalkboard-teacher"></i> Pengajar/Dosen</a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link {{ request()->routeIs('portal-admin.calendar.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.calendar.index')}}"><i class="fa fa-calendar-alt"></i> Kalender Akademik</a>
+      </li>
+      <li class="nav-item mb-3">
+        <a class="nav-link {{ request()->routeIs('portal-admin.pmb.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.pmb.index')}}"><i class="fa fa-user-graduate"></i> Manajemen PMB</a>
+      </li>
+
+      <li class="nav-item text-uppercase text-white-50 fw-semibold small mb-2" role="presentation">Kemahasiswaan</li>
+      <li class="nav-item mb-2">
+        <a class="nav-link {{ request()->routeIs('portal-admin.kemahasiswaan.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.kemahasiswaan.index')}}"><i class="fa fa-users"></i> Kemahasiswaan</a>
+      </li>
+      <li class="nav-item mb-3">
+        <a class="nav-link {{ request()->routeIs('portal-admin.scholarships.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.scholarships.index')}}"><i class="fa fa-graduation-cap"></i> Beasiswa</a>
+      </li>
+
+      <li class="nav-item text-uppercase text-white-50 fw-semibold small mb-2" role="presentation">Konten & Publikasi</li>
+      <li class="nav-item mb-2">
+        <a class="nav-link {{ request()->routeIs('portal-admin.banners.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.banners.index')}}"><i class="fa fa-image"></i> Banner</a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link {{ request()->routeIs('portal-admin.gallery.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.gallery.index')}}"><i class="fa fa-photo-video"></i> Galeri</a>
       </li>
       <li class="nav-item mb-2">
         <a class="nav-link {{ request()->routeIs('portal-admin.news.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.news.index')}}"><i class="fa fa-newspaper"></i> Pengumuman</a>
@@ -25,24 +44,27 @@
       <li class="nav-item mb-2">
         <a class="nav-link {{ request()->routeIs('portal-admin.partners.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.partners.index')}}"><i class="fa fa-handshake"></i> Partner/Mitra</a>
       </li>
-      <li class="nav-item mb-2">
+      <li class="nav-item mb-3">
         <a class="nav-link {{ request()->routeIs('portal-admin.socials.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.socials.index')}}"><i class="fa fa-share-alt"></i> Sosial Media</a>
       </li>
+
+      <li class="nav-item text-uppercase text-white-50 fw-semibold small mb-2" role="presentation">Operasional Kampus</li>
       <li class="nav-item mb-2">
-        <a class="nav-link {{ request()->routeIs('portal-admin.calendar.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.calendar.index')}}"><i class="fa fa-calendar-alt"></i> Kalender Akademik</a>
+        <a class="nav-link {{ request()->routeIs('portal-admin.settings.index') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.settings.index')}}"><i class="fa fa-cog"></i> Pengaturan Kampus</a>
       </li>
       <li class="nav-item mb-2">
         <a class="nav-link {{ request()->routeIs('portal-admin.facilities.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.facilities.index')}}"><i class="fa fa-building"></i> Fasilitas</a>
       </li>
-      <li class="nav-item mb-2">
-        <a class="nav-link {{ request()->routeIs('portal-admin.kemahasiswaan.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.kemahasiswaan.index')}}"><i class="fa fa-users"></i> Kemahasiswaan</a>
+      <li class="nav-item mb-3">
+        <a class="nav-link {{ request()->routeIs('portal-admin.payment.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.payment.index')}}"><i class="fa fa-credit-card"></i> Pembayaran BAAK</a>
       </li>
+
+      @if (auth()->user()->role === 'admin')
+      <li class="nav-item text-uppercase text-white-50 fw-semibold small mb-2" role="presentation">Admin</li>
       <li class="nav-item mb-2">
-        <a class="nav-link {{ request()->routeIs('portal-admin.scholarships.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.scholarships.index')}}"><i class="fa fa-graduation-cap"></i> Beasiswa</a>
+        <a class="nav-link {{ request()->routeIs('portal-admin.users.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.users.index')}}"><i class="fa fa-users-cog"></i> Manajemen Admin</a>
       </li>
-      <li class="nav-item mb-2">
-        <a class="nav-link {{ request()->routeIs('portal-admin.gallery.*') ? 'active fw-bold text-primary' : '' }}" href="{{route('portal-admin.gallery.index')}}"><i class="fa fa-photo-video"></i> Galeri</a>
-      </li>
+      @endif
     </ul>
   </div>
 </aside>

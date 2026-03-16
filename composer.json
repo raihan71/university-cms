@@ -10,6 +10,9 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
+        "nyholm/psr7": "^1.8",
+        "railsware/mailtrap-php": "^3.10",
+        "symfony/http-client": "^6.4",
         "yajra/laravel-disqus": "^1.2",
         "yyqsg888/laravel-minifier": "^1.5"
     },

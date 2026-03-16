@@ -163,6 +163,14 @@
                 <trix-editor id="rules_policy" class="trix-content" input="rules_policy_input"></trix-editor>
             </div>
         </div>
+        <div class="card mb-3">
+            <div class="card-header">
+                <label class="form-label" for="description">Peta Lokasi</label>
+            </div>
+            <div class="card-body">
+                <textarea placeholder="Peta Lokasi: Embed Iframe URL Google Maps" class="form-control w-100 h-100" id="map" name="map">{{ old('map', $universities->map) }}</textarea>
+            </div>
+        </div>
         <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
     </form>
 </div>

@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Settings Calendar')
+@section('title', 'PMB Detail')
 
 @push('styles')
 <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
@@ -27,23 +27,26 @@
     <div class="p-1">
         @include('layouts.alert')
     </div>
-    <h1 class="mt-4">Pengaturan Kalender Akademik</h1>
+    <h1 class="mt-4">Pengaturan PMB</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="{{ route('portal-admin.calendar.index') }}">Daftar Kalender</a></li>
-        <li class="breadcrumb-item active">Detail Kalender Akademik</li>
+        <li class="breadcrumb-item"><a href="{{ route('portal-admin.pmb.index') }}">Daftar PMB</a></li>
+        <li class="breadcrumb-item active">Detail PMB</li>
     </ol>
-    <form action="{{ route('portal-admin.calendar.updateDetails', $calendarDetail->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('portal-admin.pmb.storeDetail', $pmbDetail->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="mb-3">
-            <label for="name" class="form-label">Nama Kalender</label>
-            <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $calendarDetail->name) }}">
+            <label for="gambar" class="form-label">Gambar Brosur</label>
+            <input type="file" accept="image/*" class="form-control" id="gambar" name="gambar">
+            <div class="mt-2">
+              <a href="{{ $pmbDetail->gambar ? asset('storage/' . $pmbDetail->gambar) : '' }}" target="_blank">Lihat Gambar</a>
+            </div>
         </div>
         <div class="mb-3">
             <label for="file" class="form-label">File</label>
             <input type="file" accept="application/pdf" class="form-control" id="file" name="file">
             <div class="mt-2">
-              <a href="{{ $calendarDetail->file ? asset('storage/' . $calendarDetail->file) : '' }}" target="_blank">Lihat File</a>
+              <a href="{{ $pmbDetail->file ? asset('storage/' . $pmbDetail->file) : '' }}" target="_blank">Lihat File</a>
             </div>
         </div>
         <div class="card mb-3">
@@ -51,7 +54,7 @@
                 <label class="form-label" for="description">Deskripsi</label>
             </div>
             <div class="card-body">
-                <input id="description_input" type="hidden" name="description" value="{{ old('description', $calendarDetail->description) }}">
+                <input id="description_input" type="hidden" name="description" value="{{ old('description', $pmbDetail->description) }}">
                 <trix-editor id="description" class="trix-content" input="description_input"></trix-editor>
             </div>
         </div>
@@ -82,7 +85,7 @@
 
     // Ensure Trix editors show existing HTML from the database / old() helper.
     const trixInitialValues = {
-        description: {!! json_encode(old('description', $calendarDetail->description)) !!},
+        description: {!! json_encode(old('description', $pmbDetail->description)) !!},
     };
 
     Object.entries(trixInitialValues).forEach(([key, value]) => {

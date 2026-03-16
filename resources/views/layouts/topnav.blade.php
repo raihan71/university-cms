@@ -85,9 +85,9 @@
                                             <li><a href="{{ route('services.scholarships.show') }}">Beasiswa</a></li>
                                         </ul>
                                     </li>
-                                    <li class="has-child-menu"><a href="gallery1.html">BAK</a>
+                                    <li class="has-child-menu"><a href="javascript:;">BAAK</a>
                                         <ul class="thired-level">
-                                            <li><a href="gallery1.html">Panduan Pembayaran</a></li>
+                                            <li><a href="{{ route('services.pmb.show') }}">Panduan Pembayaran</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="https://lpm.stitalazamicjr.ac.id/" target="_blank">LPM</a></li>
@@ -99,11 +99,11 @@
                                 <ul>
                                     <li class="has-child-menu"><a href="#">PMB</a>
                                         <ul class="thired-level">
-                                            <li><a href="gallery1.html">Informasi Pendaftaran</a></li>
-                                            <li><a href="gallery2.html">Pedoman PMB</a></li>
-                                            <li><a href="single-gallery.html">Brosur PMB</a></li>
-                                            <li><a href="single-gallery.html">Jalur Beasiswa</a></li>
-                                            <li><a href="single-gallery.html">Jalur Pindahan</a></li>
+                                            <li><a href="{{ route('info.pmb.show', 'register') }}">Informasi Pendaftaran</a></li>
+                                            <li><a href="{{ route('info.pmb.show', 'pedoman') }}">Pedoman PMB</a></li>
+                                            <li><a href="{{ route('info.pmb.show', 'brosur') }}">Brosur PMB</a></li>
+                                            <li><a href="{{ route('info.pmb.show', 'beasiswa') }}">Jalur Beasiswa</a></li>
+                                            <li><a href="{{ route('info.pmb.show', 'transfer') }}">Jalur Pindahan</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="{{ route('info.news.type', 'announcement') }}">Pengumuman</a></li>

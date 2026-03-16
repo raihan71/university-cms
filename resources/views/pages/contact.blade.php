@@ -2,6 +2,16 @@
 
 @section('title', 'Kontak kami')
 
+@push('head')
+    <style>
+        .google-map-area iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+@endpush
+
 @section('content')
 <div class="inner-page-banner-area pt-30" style="background: url('{{ asset('img/course/course-detail.jpg') }}'); background-position: contain;">
     <div class="container">
@@ -76,7 +86,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="google-map-area" style="width: 100%; height: 450px;">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.030545762666!2d107.12265867576397!3d-6.886944667392589!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e685224207805f5%3A0x5bdd5b6dd7fd35da!2sSTIT%20Al-Azami%20Cianjur!5e0!3m2!1sen!2sid!4v1773300219412!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            {!! $university->map !!}
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@
 @section('title', $course->name)
 
 @push('head')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
 <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
 @endpush
@@ -173,3 +174,40 @@
     </div>
 </div>
 @endsection
+
+
+@push('scripts')
+    <script>
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+
+        $('#question-form').on('submit', function(e) {
+            e.preventDefault();
+
+            var formData = {
+                name: $('#form-name').val(),
+                email: $('#form-email').val(),
+                message: $('#sidebar-form-message').val(),
+                };
+
+            $.ajax({
+                url: '{{ route("course.sendEmail") }}',
+                method: 'POST',
+                data: formData,
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken
+                },
+                success: function(response) {
+                    $('#question-form .form-response').html('<div class="alert alert-success">' + response.message + '</div>');
+                    $('#question-form')[0].reset();
+                },
+                error: function(xhr) {
+                    var errorMessage = 'Terjadi kesalahan. Silakan coba lagi.';
+                    if (xhr.responseJSON && xhr.responseJSON.message) {
+                        errorMessage = xhr.responseJSON.message;
+                    }
+                    $('#question-form .form-response').html('<div class="alert alert-danger">' + errorMessage + '</div>');
+                }
+            });
+        });
+    </script>
+@endpush

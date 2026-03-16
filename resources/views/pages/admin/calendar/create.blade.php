@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Settings')
+@section('title', 'Settings Calendar')
 
 @section('content')
 <div class="container-fluid mb-4">
