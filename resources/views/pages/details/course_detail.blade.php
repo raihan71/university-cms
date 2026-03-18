@@ -6,6 +6,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
 <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 @endpush
 
 @push('scripts')
@@ -154,6 +155,13 @@
                                             <div class="help-block with-errors"></div>
                                         </div>
                                         <div class="form-group">
+                                            <strong>ReCaptcha:</strong>
+                                            <div class="g-recaptcha" data-sitekey="{{ env('GOOGLE_RECAPTCHA_SITE_KEY') }}"></div>
+                                            @if ($errors->has('g-recaptcha-response'))
+                                                <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
+                                            @endif
+                                        </div>
+                                        <div class="form-group">
                                             <button type="submit" class="default-full-width-btn">Kirim Sekarang</button>
                                         </div>
                                         <div class='form-response'></div>
@@ -187,7 +195,8 @@
                 name: $('#form-name').val(),
                 email: $('#form-email').val(),
                 message: $('#sidebar-form-message').val(),
-                };
+                'g-recaptcha-response': grecaptcha.getResponse(document.querySelector('.g-recaptcha').getAttribute('data-sitekey'))
+            };
 
             $.ajax({
                 url: '{{ route("course.sendEmail") }}',

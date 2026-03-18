@@ -5,11 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Mail;
 use App\Mail\SendEmail;
+use App\Rules\ReCaptha;
 
 class MailController extends Controller
 {
     public function askQuestionProgram(Request $request)
     {
+        $request->validate([
+            'g-recaptcha-response' => ['required', new ReCaptha],
+        ]);
+
         $data = [
             'title' => 'Pertanyaan Masuk dari ' . $request->input('name'),
             'body' => 'Ada pertanyaan baru yang masuk terkait program.',
@@ -23,6 +28,10 @@ class MailController extends Controller
 
     public function contact(Request $request)
     {
+        $request->validate([
+            'g-recaptcha-response' => ['required', new ReCaptha],
+        ]);
+
         $data = [
             'title' => 'Kontak dari ' . $request->input('name'),
             'body' => 'Ada pesan baru yang masuk.',

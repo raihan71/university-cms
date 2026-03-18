@@ -1,5 +1,9 @@
 @extends('layouts.auth')
 
+@push('scripts')
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+@endpush
+
 @section('content')
 <main>
     <div class="container">
@@ -51,6 +55,12 @@
                                     placeholder="Masukkan Password"/>
                                 @if($errors->has('password'))
                                 <span class="error">{{ $errors->first('password') }}</span>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <div class="g-recaptcha" data-sitekey="{{ env('GOOGLE_RECAPTCHA_SITE_KEY') }}"></div>
+                                @if ($errors->has('g-recaptcha-response'))
+                                    <span class="error">{{ $errors->first('g-recaptcha-response') }}</span>
                                 @endif
                             </div>
                             <div class="form-group">

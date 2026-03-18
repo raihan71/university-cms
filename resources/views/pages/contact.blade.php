@@ -4,6 +4,7 @@
 
 @push('head')
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <style>
         .google-map-area iframe {
             width: 100%;
@@ -63,10 +64,19 @@
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
-                                <div class="ol-sm-12">
+                                <div class="col-sm-12">
                                     <div class="form-group">
                                         <textarea placeholder="Pesan*" class="textarea form-control" name="message" id="form-message" rows="8" cols="20" data-error="Message field is required" required></textarea>
                                         <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <strong>ReCaptcha:</strong>
+                                        <div class="g-recaptcha" data-sitekey="{{ env('GOOGLE_RECAPTCHA_SITE_KEY') }}"></div>
+                                        @if ($errors->has('g-recaptcha-response'))
+                                            <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-sm-12">
@@ -103,7 +113,8 @@
                 name: $('#form-name').val(),
                 email: $('#form-email').val(),
                 message: $('#sidebar-form-message').val(),
-                };
+                'g-recaptcha-response': grecaptcha.getResponse(document.querySelector('.g-recaptcha').getAttribute('data-sitekey'))
+            };
 
             $.ajax({
                 url: '{{ route("contact.sendEmail") }}',
