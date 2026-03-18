@@ -186,19 +186,19 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 counter1-box wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".20s">
-                <h2 class="about-counter title-bar-counter" data-num="80">{{$university->count_teacher}}</h2>
+                <h2 class="about-counter title-bar-counter" data-num="{{ $university->count_teacher }}">{{$university->count_teacher}}</h2>
                 <p>PROFESIONAL DOSEN</p>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 counter1-box wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".40s">
-                <h2 class="about-counter title-bar-counter" data-num="20">{{$university->count_program}}</h2>
+                <h2 class="about-counter title-bar-counter" data-num="{{ $university->count_program }}">{{$university->count_program}}</h2>
                 <p>PROGRAM STUDI TERBAIK</p>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 counter1-box wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".60s">
-                <h2 class="about-counter title-bar-counter" data-num="56">{{$university->count_student}}</h2>
+                <h2 class="about-counter title-bar-counter" data-num="{{ $university->count_student }}">{{$university->count_student}}</h2>
                 <p>MAHASISWA TERDAFTAR</p>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 counter1-box wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".80s">
-                <h2 class="about-counter title-bar-counter" data-num="77">{{$university->count_alumni}}</h2>
+                <h2 class="about-counter title-bar-counter" data-num="{{ $university->count_alumni }}">{{$university->count_alumni}}</h2>
                 <p>ALUMNI SEBELUMNYA</p>
             </div>
         </div>

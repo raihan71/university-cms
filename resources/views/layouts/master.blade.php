@@ -11,7 +11,7 @@
 @else
 <meta property="og:title" content="STIT Al Azami Cianjur">
 <meta property="og:description" content="Sekolah Tinggi Ilmu Tarbiyah (STIT) Al-Azami Cianjur merupakan salah satu lembaga pendidikan yang berada dibawah naungan Yayasan Pendidikan Islam (YPI) Al-Azami Cianjur tersedia kuliah PAI dan PIAUD">
-<meta property="og:image" content="https://v2.stitalazamicjr.ac.id/storage/logos/logo_2_69ba70e8a08e8.png">
+<meta property="og:image" content="https://v2.stitalazamicjr.ac.id/img/about/building2.jpg">
 <meta property="og:url" content="{{ url()->current() }}">
 <meta property="og:type" content="website">
 @endif

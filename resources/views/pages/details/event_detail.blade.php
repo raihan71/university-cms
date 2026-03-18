@@ -11,7 +11,7 @@
 @push('meta')
     <meta property="og:title" content="{{ $event->title }}">
     <meta property="og:description" content="{{ $event->description }}">
-    <meta property="og:image" content="{{ $event->image ? asset('storage/' . $event->image) : asset('img/news/default.jpg') }}">
+    <meta property="og:image" content="https://v2.stitalazamicjr.ac.id/storage/{{ $event->image ? $event->image : '' }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="article">
 @endpush
