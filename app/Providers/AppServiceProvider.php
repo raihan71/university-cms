@@ -30,6 +30,14 @@ class AppServiceProvider extends ServiceProvider
             $view->with('kemahasiswaans', Kemahasiswaan::orderBy('name')->get());
         });
 
+        view()->composer('layouts.mobilenav', function ($view) {
+            $universities = University::firstOrFail();
+            $courses = Course::orderBy('name')->get();
+            $view->with('universities', $universities);
+            $view->with('courses', $courses);
+            $view->with('kemahasiswaans', Kemahasiswaan::orderBy('name')->get());
+        });
+
         view()->composer('layouts.dashboard', function ($view) {
             $universities = University::firstOrFail();
             $view->with('universities', $universities);

@@ -7,6 +7,16 @@
   <title>@yield('title') - {{ env('APP_NAME', 'STIT Al Azami Cianjur') }}</title>
   <meta name="description" content="@yield('meta_description', 'Default site description')">
   <meta name="keywords" content="@yield('meta_keywords', 'keyword1, keyword2')">
+@if(View::hasSection('meta'))
+    @stack('meta')
+@else
+<meta property="og:title" content="STIT Al Azami Cianjur">
+<meta property="og:description" content="Sekolah Tinggi Ilmu Tarbiyah (STIT) Al-Azami Cianjur merupakan salah satu lembaga pendidikan yang berada dibawah naungan Yayasan Pendidikan Islam (YPI) Al-Azami Cianjur tersedia kuliah PAI dan PIAUD">
+<meta property="og:image" content="https://v2.stitalazamicjr.ac.id/storage/logos/logo_2_69ba70e8a08e8.png">
+<meta property="og:url" content="{{ url()->current() }}">
+<meta property="og:type" content="website">
+@endif
+  @include('layouts.meta-seo')
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/x-icon" href="{{ $universities->logo ? asset('storage/' . $universities->logo) : asset('img/logo-textprimary.png') }}">
   <!-- Normalize CSS -->

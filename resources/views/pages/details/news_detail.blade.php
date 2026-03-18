@@ -7,6 +7,14 @@
 <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
 @endpush
 
+@push('meta')
+<meta property="og:title" content="{{ $news->title }}">
+<meta property="og:description" content="{{ $news->description }}">
+<meta property="og:image" content="{{ $news->image ? asset('storage/' . $news->image) : asset('img/news/default.jpg') }}">
+<meta property="og:url" content="{{ url()->current() }}">
+<meta property="og:type" content="article">
+@endpush
+
 @section('content')
 <!-- Inner Page Banner Area Start Here -->
 <div class="inner-page-banner-area pt-30" style="background: url('{{ asset('img/course/course-detail-unsplash.jpg') }}'); background-position: center;">

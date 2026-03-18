@@ -86,7 +86,7 @@
           </div>
           <div class="form-group">
               <label for="prodi">Prodi</label>
-              <select class="form-control" id="prodi" name="prodi" required>
+              <select class="form-control" id="prodi" name="prodi">
                 <option value="" disabled selected>Pilih Prodi</option>
                 @foreach($courses as $course)
                     <option value="{{ $course->slug }}" {{ $course->slug == $teacher->prodi ? 'selected' : '' }}>{{ $course->name }}</option>
