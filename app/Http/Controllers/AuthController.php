@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Rules\ReCaptha;
 
 class AuthController extends Controller
 {
@@ -20,7 +21,7 @@ class AuthController extends Controller
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required|min:6',
-            'g-recaptcha-response' => 'required|captcha',
+            'g-recaptcha-response' => ['required', new ReCaptha],
         ]);
 
         if (auth()->attempt($credentials)) {
