@@ -24,7 +24,8 @@ class AuthController extends Controller
             'g-recaptcha-response' => ['required', new ReCaptha],
         ]);
 
-        if (auth()->attempt($credentials)) {
+        $loginCredentials = $request->only('email', 'password');
+        if (auth()->attempt($loginCredentials)) {
             // Authentication passed
             return redirect()->route('portal-admin.dashboard');
         }
