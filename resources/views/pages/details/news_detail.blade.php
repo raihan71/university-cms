@@ -7,6 +7,7 @@
 <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
 @endpush
 
+@section('meta')
 @push('meta')
 <meta property="og:title" content="{{ $news->title }}">
 <meta property="og:description" content="{{ $news->description }}">
@@ -14,6 +15,7 @@
 <meta property="og:url" content="{{ url()->current() }}">
 <meta property="og:type" content="article">
 @endpush
+@stop
 
 @section('content')
 <!-- Inner Page Banner Area Start Here -->

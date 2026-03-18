@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>@yield('title') - {{ env('APP_NAME', 'STIT Al Azami Cianjur') }}</title>
-  <meta name="description" content="@yield('meta_description', 'Default site description')">
-  <meta name="keywords" content="@yield('meta_keywords', 'keyword1, keyword2')">
+  @include('layouts.meta-seo')
 @if(View::hasSection('meta'))
     @stack('meta')
 @else
@@ -16,7 +15,6 @@
 <meta property="og:url" content="{{ url()->current() }}">
 <meta property="og:type" content="website">
 @endif
-  @include('layouts.meta-seo')
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/x-icon" href="{{ $universities->logo ? asset('storage/' . $universities->logo) : asset('img/logo-textprimary.png') }}">
   <!-- Normalize CSS -->
