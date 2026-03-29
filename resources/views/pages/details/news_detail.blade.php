@@ -5,6 +5,12 @@
 @push('head')
 <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
 <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
+<style>
+    .share-label {
+        font-weight: bold;
+        margin-right: 10px;
+    }
+</style>
 @endpush
 
 @section('meta')
@@ -61,6 +67,7 @@
                             $shareTitle = urlencode($news->title);
                         @endphp
                         <ul class="news-social">
+                            <span class="share-label">Share:</span>
                             <li>
                                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ $shareUrl }}" target="_blank" rel="noopener noreferrer">
                                     <i class="fa fa-facebook" aria-hidden="true"></i>
