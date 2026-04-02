@@ -114,7 +114,7 @@
             var formData = {
                 name: $('#form-name').val(),
                 email: $('#form-email').val(),
-                message: $('#sidebar-form-message').val(),
+                message: $('#form-message').val(),
                 'g-recaptcha-response': grecaptcha.getResponse()
             };
 

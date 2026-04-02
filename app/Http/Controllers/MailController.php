@@ -16,12 +16,13 @@ class MailController extends Controller
         ]);
 
         $data = [
-            'title' => 'Pertanyaan Masuk dari ' . $request->input('name'),
+            'title' => 'Pertanyaan Masuk dari ' . $request->input('email'),
             'body' => 'Ada pertanyaan baru yang masuk terkait program.',
             'message' => $request->input('message'),
+            'email' => $request->input('email'),
         ];
 
-        Mail::to('raihannismara@gmail.com')->send(new SendEmail($data));
+        Mail::to(config('mail.to_address'))->send(new SendEmail($data));
 
         return response()->json(['message' => 'Email berhasil dikirim.']);
     }
@@ -33,12 +34,13 @@ class MailController extends Controller
         ]);
 
         $data = [
-            'title' => 'Kontak dari ' . $request->input('name'),
-            'body' => 'Ada pesan baru yang masuk.',
+            'title' => 'Kontak dari ' . $request->input('email'),
+            'body' => 'Ada pesan baru yang masuk dari ' . $request->input('name') . '.',
             'message' => $request->input('message'),
+            'email' => $request->input('email'),
         ];
 
-        Mail::to('raihannismara@gmail.com')->send(new SendEmail($data));
+        Mail::to(config('mail.to_address'))->send(new SendEmail($data));
 
         return response()->json(['message' => 'Email berhasil dikirim.']);
     }

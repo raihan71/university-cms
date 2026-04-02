@@ -10,12 +10,13 @@
 
 <body>
 
-    <h1>{{ $data['title'] }}</h1>
+    <h3>{{ $data['title'] }}</h3>
 
     <p>{{ $data['body'] }}</p>
 
+    <p>Dari: {{ $data['email'] }}</p>
 
-    <p>{{ $data['message'] }}</p>
+    <p>Pesan: {{ $data['message'] }}</p>
 
     <p>Terima kasih</p>
 
