@@ -191,12 +191,19 @@
         $('#question-form').on('submit', function(e) {
             e.preventDefault();
 
+            const captchaElement = document.querySelector('#question-form .g-recaptcha');
+            const siteKey = captchaElement?.dataset.sitekey;
+
             var formData = {
                 name: $('#form-name').val(),
                 email: $('#form-email').val(),
                 message: $('#sidebar-form-message').val(),
-                'g-recaptcha-response': grecaptcha.getResponse(document.querySelector('.g-recaptcha').getAttribute('data-sitekey'))
+                'g-recaptcha-response': grecaptcha.getResponse()
             };
+
+            if (siteKey) {
+                formData['g-recaptcha-site-key'] = siteKey;
+            }
 
             $.ajax({
                 url: '{{ route("course.sendEmail") }}',
