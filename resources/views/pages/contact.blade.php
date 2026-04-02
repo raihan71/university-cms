@@ -4,7 +4,7 @@
 
 @push('head')
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
         .google-map-area iframe {
             width: 100%;
@@ -103,7 +103,7 @@
 @stop
 
 @push('scripts')
-    <script>
+    <script ignore--minify>
         const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
 
         $('#contact-form').on('submit', function(e) {
